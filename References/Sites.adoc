@@ -1,0 +1,31 @@
+= References
+
+
+== Ansible Automation Platform (AAP 2)
+
+* *Introducing Ansible Automation Platform 2*
+** https://www.ansible.com/blog/introducing-ansible-automation-platform-2
+
+* *What's new in Ansible Automation Platform 2: private automation hub*
+** https://www.ansible.com/blog/whats-new-in-ansible-automation-platform-2-private-automation-hub
+
+
+== Execution Environments
+
+* *Automating execution environment image builds with GitHub Actions*
+** https://www.ansible.com/blog/automating-execution-environment-image-builds-with-github-actions
+
+
+== Ansible Navigator
+
+* *Github Navigator Project*
+** https://github.com/ansible/ansible-navigator
+
+* *Ansible Navigator Settings*
+** https://ansible-navigator.readthedocs.io/en/latest/settings/
+
+
+== Ansible Automation Hub
+
+* *To Install & configure the Ansible Ansible Automation Hub*
+** https://www.jazakallah.info/post/to-install-configure-the-ansible-ansible-automation-hub
