@@ -1,0 +1,21 @@
+---
+- name: Demo of Forks=2 Serial=4
+  hosts: webservers
+  serial: 4
+  gather_facts: no
+
+  tasks:
+    - name: Demo Message
+      debug:
+        msg: I'm running this with Forks=2 and Serial=4
+
+#    - name: Introduce a sleep and pause to the system
+#      pause:
+#        seconds: 10
+
+    - name: Introduce a sleep and pause to the system for 10 seconds
+      shell: sleep 10
+
+    - name: Pause to show end of play in playbook
+      pause:
+        prompt: "This is the end of the play and set of tasks in the playbook, hit ENTER to continue"      

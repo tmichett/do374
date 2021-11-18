@@ -1,0 +1,4 @@
+Show spaces and list all hidden characters that are needed!!
+
+:set list
+:set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
