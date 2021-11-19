@@ -1,0 +1,11 @@
+---
+- name: Playbook to test Ansible Navigator
+  hosts: all
+#  serial: 1
+  tasks:
+    - name: Testing Connectivity with Ping Module
+      ping:
+
+    - name: Displaying Host Output
+      debug:
+        msg: Hello, I'm {{ ansible_facts['hostname']  }} and my kernel version is {{ ansible_facts['kernel'] }}.

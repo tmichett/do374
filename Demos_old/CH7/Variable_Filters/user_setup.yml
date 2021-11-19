@@ -1,0 +1,10 @@
+- name: Example to setup a user and a password
+  hosts: all
+  vars:
+    username: travis
+    password: redhat
+  tasks:
+    - name: Create a user named travis
+      user:
+        name: "{{ username }}"
+        password: "{{  password |  password_hash('sha512') }}"

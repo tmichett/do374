@@ -1,0 +1,3 @@
+[student@workstation S1]$ ansible-playbook user_setup.yml -b
+
+[student@workstation S1]$ ssh travis@serverf -o PubKeyAuthentication=no
