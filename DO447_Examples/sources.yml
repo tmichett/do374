@@ -1,0 +1,5 @@
+---
+files: 
+  - hosts
+  - tests
+  - config

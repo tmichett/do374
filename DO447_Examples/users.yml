@@ -1,0 +1,12 @@
+---
+- users:
+  - name: john
+    midname: andrew
+    lastname: doe
+  - name: karen
+    midname: betty
+    lastname: engels
+  - name: lauren
+    midname: christian
+    lastname: roberts
+

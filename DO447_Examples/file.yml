@@ -1,0 +1,17 @@
+- name: Populate users from file
+  hosts: all
+  gather_facts: no
+  vars_files: users.yml
+  tasks:
+    - name: Create remote user
+      vars: 
+        - variable: "{{ lookup('password','credentials/'+ item.name +'_password length=5 chars=digits') }}"
+        - name: "{{ item.name | capitalize}}"
+        - midname: "{{ item.midname | capitalize }}"
+        - lastname: "{{ item.lastname | capitalize }}"
+      debug:
+        msg: "{{ variable }} & {{ name | capitalize }} * {{ midname }} + {{ lastname }}"
+      debug: 
+        msg: " {{ variable | password_hash('sha512','mysalt') }}"
+      loop: "{{ users }}"
+
