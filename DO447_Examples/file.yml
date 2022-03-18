@@ -2,15 +2,17 @@
   hosts: all
   gather_facts: no
   vars_files: users.yml
+  vars: 
+    - variable: "{{ lookup('password','credentials/'+ item.name +'_password length=5 chars=digits') }}"
+    - firname: "{{ item.name | capitalize}}"
+    - midname: "{{ item.midname | capitalize }}"
+    - lastname: "{{ item.lastname | capitalize }}"
   tasks:
-    - name: Create remote user
-      vars: 
-        - variable: "{{ lookup('password','credentials/'+ item.name +'_password length=5 chars=digits') }}"
-        - name: "{{ item.name | capitalize}}"
-        - midname: "{{ item.midname | capitalize }}"
-        - lastname: "{{ item.lastname | capitalize }}"
+    - name: Output of Users
       debug:
-        msg: "{{ variable }} & {{ name | capitalize }} * {{ midname }} + {{ lastname }}"
+        msg: "Firstname - {{ firname }} Middle Name - {{ midname }} and Last Name - {{ lastname }}"
+      loop: "{{ users }}"
+    - name: Output of variable password
       debug: 
         msg: " {{ variable | password_hash('sha512','mysalt') }}"
       loop: "{{ users }}"
