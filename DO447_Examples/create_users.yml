@@ -1,0 +1,19 @@
+- name: Populate users from file
+  hosts: all
+  gather_facts: no
+  vars_files: users.yml
+  vars: 
+    - variable: "{{ lookup('password','credentials/'+ item.name +'_password length=5 chars=digits') }}"
+    - firname: "{{ item.name | capitalize}}"
+    - midname: "{{ item.midname | capitalize }}"
+    - lastname: "{{ item.lastname | capitalize }}"
+  tasks:
+    - name: Output of Users
+      debug:
+        msg: "Firstname - {{ firname }} Middle Name - {{ midname }} and Last Name - {{ lastname }}"
+      loop: "{{ users }}"
+    - name: Output of variable password
+      debug: 
+        msg: " {{ variable | password_hash('sha512','mysalt') }}"
+      loop: "{{ users }}"
+
