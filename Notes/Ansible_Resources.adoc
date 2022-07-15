@@ -1,0 +1,5 @@
+= Ansible Resources and References
+
+* *Ansible Utils Collection*: https://galaxy.ansible.com/ansible/utils?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW
+
+* *Ansible Ad-Hoc Commands*: https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html

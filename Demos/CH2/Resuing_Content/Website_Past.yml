@@ -1,0 +1,34 @@
+---
+- name: Playbook to Fully Setup and Configure a Webserver
+  hosts: servera
+  tasks:
+    - name: Install Packages for Webserver
+      yum:
+        name:
+          - httpd
+          - firewalld
+        state: latest
+
+    - name: Create Content for Webserver
+      copy:
+        content: "I'm an awesome webserver of the past!!!\n"
+        dest: /var/www/html/index.html
+
+    - name: Firewall is Enabled
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: HTTP Service is Open on Firewall
+      firewalld:
+        service: http
+        state: enabled
+        permanent: true
+        immediate: yes
+
+    - name: httpd is started
+      systemd:
+        name: httpd
+        state: started
+        enabled: true

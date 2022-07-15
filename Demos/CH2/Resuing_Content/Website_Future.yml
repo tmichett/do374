@@ -1,0 +1,35 @@
+---
+- name: Playbook to Fully Setup and Configure a Webserver
+  hosts: serverb
+  become: true
+  tasks:
+    - name: Install Packages for Webserver
+      ansible.builtin.yum:
+        name:
+          - httpd
+          - firewalld
+        state: latest
+
+    - name: Create Content for Webserver
+      ansible.builtin.copy:
+        content: "I'm an awesome webserver of the future!!\n"
+        dest: /var/www/html/index.html
+
+    - name: Firewall is Enabled
+      ansible.builtin.systemd:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: HTTP Service is Open on Firewall
+      ansible.posix.firewalld:
+        service: http
+        state: enabled
+        permanent: true
+        immediate: yes
+
+    - name: httpd is started
+      ansible.builtin.systemd:
+        name: httpd
+        state: started
+        enabled: true
