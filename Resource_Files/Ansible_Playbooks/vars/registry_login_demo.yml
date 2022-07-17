@@ -1,0 +1,4 @@
+---
+registry_un: UN_Goes_Here
+registry_pass: Password_Goes_Here
+registry_url: quay.io

@@ -1,0 +1,47 @@
+Host "{{ course_sku }}"_*
+  StrictHostKeyChecking no
+  ForwardAgent yes
+  ForwardX11 no
+  PreferredAuthentications publickey
+
+Host "{{ course_sku }}"_classroom
+  User instructor
+  Hostname "{{ ROLE_IP }}"
+  IdentityFile /home/travis/.ssh/instructor_key
+  Port 22022
+
+Host "{{ course_sku }}"_bastion
+  Hostname 172.25.252.1
+  User student
+  ProxyJump "{{ course_sku }}"_classroom
+
+
+Host "{{ course_sku }}"_workstation
+  Hostname workstation
+  User student
+  ProxyJump "{{ course_sku }}"_bastion
+
+Host "{{ course_sku }}"_utility
+  Hostname utility
+  User student
+  ProxyJump "{{ course_sku }}"_bastion
+
+Host "{{ course_sku }}"_servera
+  Hostname servera
+  User student
+  ProxyJump "{{ course_sku }}"_bastion
+
+Host "{{ course_sku }}"_serverb
+  Hostname serverb
+  User student
+  ProxyJump "{{ course_sku }}"_bastion
+
+Host "{{ course_sku }}"_serverc
+  Hostname serverc
+  User student
+  ProxyJump "{{ course_sku }}"_bastion
+
+Host "{{ course_sku }}"_serverd
+  Hostname serverd
+  User student
+  ProxyJump "{{ course_sku }}"_bastion

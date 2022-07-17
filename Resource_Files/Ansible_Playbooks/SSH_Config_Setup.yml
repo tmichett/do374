@@ -1,0 +1,37 @@
+  ### Play to get system ready for creating Classroom Environments
+  ### Designed to be run from localhost
+- name: Setup System for Github with Tools
+  hosts: localhost
+  vars:
+    linux_username: travis
+    course_sku: rh999
+    ROLE_IP: 150.239.52.xx
+  tasks:
+
+## Install Support Software
+
+    - name: Create SSH Config.D Directory
+      ansible.builtin.file:
+        path: /home/{{ linux_username }}/.ssh/config.d
+        state: directory
+        mode: '0700'
+
+    - name: Create SSH Course File
+      ansible.builtin.template:
+        src: Templates/SSH_Config.j2
+        dest: /home/{{ linux_username }}/.ssh/config.d/{{ course_sku }}.conf
+        mode: '0600'
+
+    - name: Perform Touch on File to Ensure it Exists
+      ansible.builtin.file:
+        path: /home/{{ linux_username }}/.ssh/config
+        state: touch
+        mode: '0600'
+
+
+    - name: Update SSH Config
+      ansible.builtin.lineinfile:
+        path: /home/{{ linux_username }}/.ssh/config
+        insertbefore: BOF
+        regexp: '^include ~/.ssh/config.d/*.conf'
+        line: include ~/.ssh/config.d/*.conf
