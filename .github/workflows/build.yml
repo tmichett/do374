@@ -48,8 +48,8 @@ jobs:
         uses: redhat-actions/podman-login@v1
         with:
           registry: quay.io
-          username: ${{ secrets.REDHAT_USERNAME }}
-          password: ${{ secrets.REDHAT_PASSWORD }}
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
 
         
       - name: Pull from quay.io
