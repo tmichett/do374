@@ -6,29 +6,6 @@ name: Build PDF
 on: 
   # This is a reusable workflow
   workflow_dispatch:
-    inputs:
-      EE_FOLDER_NAME:
-        description: 'name of the folder where the EE is located (will become the name of the EE)'
-        default: ''
-        required: true
-        type: string
-      EE_IMAGE_TAG:
-        description: 'just one tag for image build'
-        default: 'latest'
-        required: true
-        type: string
-      QUAY_USER:
-        description: 'this is used during the image push to quay'
-        required: true
-        type: string
-    secrets:
-      QUAY_PASSWORD:
-        description: 'needed for registry login'
-        required: true
-      QUAY_USERNAME:
-        description: 'needed for registry login'
-        required: true
-
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -43,22 +20,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Log in to quay.io
-        id: registry-quay
-        uses: redhat-actions/podman-login@v1
-        with:
-          registry: quay.io
-          username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_PASSWORD }}
+      - name: Podman Build Book
+        run: podman run --name adocpdf --rm -v $(pwd)::/tmp/coursebook:Z quay.io/tmichett/asciidocpdf:latest -a pdf-theme=/opt/asciidoc/themes/tm-gls-redhat-theme.yml 
 
-        
-      - name: Pull from quay.io
-        id: pull-from-quay
-        uses: redhat-actions/push-to-registry@v2
-        with:
-          image: ${{ inputs.EE_FOLDER_NAME }}
-          tags: |
-            ${{ inputs.EE_IMAGE_TAG }}
-          registry: quay.io/${{ inputs.QUAY_USER }}/
-          username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_PASSWORD }} 
+
