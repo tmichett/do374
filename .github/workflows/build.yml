@@ -3,9 +3,9 @@ name: Build PDF
 
 
 # Controls when the workflow will run
-on: [workflow_dispatch]
+on: 
   # This is a reusable workflow
-  workflow_call:
+  workflow_dispatch:
     inputs:
       EE_FOLDER_NAME:
         description: 'name of the folder where the EE is located (will become the name of the EE)'
