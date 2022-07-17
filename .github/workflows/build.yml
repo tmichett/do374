@@ -1,0 +1,64 @@
+# Workflow name
+name: EE build (reusable)
+
+
+# Controls when the workflow will run
+on:
+  # This is a reusable workflow
+  workflow_call:
+    inputs:
+      EE_FOLDER_NAME:
+        description: 'name of the folder where the EE is located (will become the name of the EE)'
+        default: ''
+        required: true
+        type: string
+      EE_IMAGE_TAG:
+        description: 'just one tag for image build'
+        default: 'latest'
+        required: true
+        type: string
+      QUAY_USER:
+        description: 'this is used during the image push to quay'
+        required: true
+        type: string
+    secrets:
+      REDHAT_PASSWORD:
+        description: 'needed for registry login'
+        required: false
+      REDHAT_USERNAME:
+        description: 'needed for registry login'
+        required: false
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    environment: deploy
+    steps:
+
+      # In this job, all steps begin with a name
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Log in to quay.io
+        id: registry-quay
+        uses: redhat-actions/podman-login@v1
+        with:
+          registry: quay.io
+          username: ${{ secrets.REDHAT_USERNAME }}
+          password: ${{ secrets.REDHAT_PASSWORD }}
+
+        
+      - name: Pull from quay.io
+        id: pull-from-quay
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ inputs.EE_FOLDER_NAME }}
+          tags: |
+            ${{ inputs.EE_IMAGE_TAG }}
+          registry: quay.io/${{ inputs.QUAY_USER }}/
+          username: ${{ secrets.REDHAT_USERNAME }}
+          password: ${{ secrets.REDHAT_PASSWORD }} 
