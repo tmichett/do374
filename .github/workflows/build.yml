@@ -3,7 +3,7 @@ name: Build PDF
 
 
 # Controls when the workflow will run
-on:
+on: [workflow_dispatch]
   # This is a reusable workflow
   workflow_call:
     inputs:
