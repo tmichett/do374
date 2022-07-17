@@ -22,10 +22,10 @@ on:
         required: true
         type: string
     secrets:
-      REDHAT_PASSWORD:
+      QUAY_PASSWORD:
         description: 'needed for registry login'
         required: false
-      REDHAT_USERNAME:
+      QUAY_USERNAME:
         description: 'needed for registry login'
         required: false
 
