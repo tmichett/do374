@@ -21,6 +21,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Podman Build Book
-        run: podman run --name adocpdf --rm -v $(pwd)::/tmp/coursebook:Z quay.io/tmichett/asciidocpdf:latest -a pdf-theme=/opt/asciidoc/themes/tm-gls-redhat-theme.yml 
+        run: podman run --name adocpdf --rm -v $(pwd):/tmp/coursebook:Z quay.io/tmichett/asciidocpdf:latest -a pdf-theme=/opt/asciidoc/themes/tm-gls-redhat-theme.yml 
 
 
