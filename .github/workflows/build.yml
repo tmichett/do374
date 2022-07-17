@@ -24,10 +24,10 @@ on:
     secrets:
       QUAY_PASSWORD:
         description: 'needed for registry login'
-        required: false
+        required: true
       QUAY_USERNAME:
         description: 'needed for registry login'
-        required: false
+        required: true
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -60,5 +60,5 @@ jobs:
           tags: |
             ${{ inputs.EE_IMAGE_TAG }}
           registry: quay.io/${{ inputs.QUAY_USER }}/
-          username: ${{ secrets.REDHAT_USERNAME }}
-          password: ${{ secrets.REDHAT_PASSWORD }} 
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }} 
