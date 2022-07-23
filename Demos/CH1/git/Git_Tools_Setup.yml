@@ -1,0 +1,96 @@
+  ### Play to get system ready for creating Classroom Environments
+  ### Designed to be run from localhost
+- name: Setup System for Github with Tools
+  hosts: localhost
+  vars:
+    linux_username: student
+    install_packages:
+      - git
+      - dnf-command(config-manager)
+  vars_files:
+    - vars/git_creds.yml
+
+  tasks:
+
+## Install Support Software
+
+    - name: Install Packages for Classroom Building
+      yum:
+        name: "{{ install_packages }}"
+        state: latest
+      become: true
+
+
+    - name: Add repository for Github Tools
+      ansible.builtin.yum_repository:
+        name: GithubTools
+        description: Github Tools with Github CLI
+        baseurl: https://cli.github.com/packages/rpm
+        gpgkey: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xc99b11deb97541f0
+      become: true
+
+    - name: Install Github CLI
+      yum:
+        name: gh
+      become: true
+
+## Clone Repositories
+## Note this breaks if running a second time as a clone
+## Need to clean up with some logic around this
+
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: /home/{{ linux_username }}/Github
+        state: directory
+        mode: '0775'
+
+    - name: Clone BASH Git Prompt Github Repository
+      ansible.builtin.git:
+        repo: "https://github.com/magicmonty/bash-git-prompt.git"
+        dest: "/home/{{ linux_username }}/.bash-git-prompt"
+        version: master
+        depth: 1
+
+    - name: Recursively change ownership of a directory
+      file:
+        path: /home/{{ linux_username }}/Github
+        state: directory
+        recurse: yes
+        owner: "{{ linux_username }}"
+        group: "{{ linux_username }}"
+      become: true
+
+## Create BASHRC File for Git Prompt
+    - name: Create a bashrc.d directory if it does not exist
+      ansible.builtin.file:
+        path: /home/{{ linux_username }}/.bashrc.d
+        state: directory
+        mode: '0775'
+
+    - name: Copy BASHRC Git Prompt Script
+      copy:
+        src: Files/BASHRC_Git_prompt
+        dest: /home/{{ linux_username }}/.bashrc.d/git_prompt.bashrc
+        mode: '0775'
+
+    - name: Update BASHRC File to look at bashrc.d directory
+      ansible.builtin.blockinfile:
+        path: /home/{{ linux_username }}/.bashrc
+        marker: "##-- {mark} RH GLS ANSIBLE MANAGED BLOCK --##"
+        block: |
+          #IBM/GLS Cloud Stuff
+          PATH="${HOME}/.local/bin:${HOME}/local/bin:${HOME}/bin:${PATH}"
+          export PATH
+          if [ -d ~/.bashrc.d ]; then
+            for rc in ~/.bashrc.d/*; do
+              if [ -f "$rc" ]; then
+                . "$rc"
+              fi
+            done
+          fi
+        backup: yes
+
+## Create Git Alias Logline Command
+
+    - name: Copy BASHRC Git Prompt Script
+      shell: git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

@@ -1,0 +1,29 @@
+[user]
+  name = Name
+  email = EMAIL
+  signingkey = GPG_KEY
+
+
+[commit]
+  template = ~/.gitmessage
+  gpgsign = true
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+
+[init]
+  templateDir = /home/dank/.git-template
+
+[alias]
+  logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[fetch]
+prune = true
+
+[pull]
+rebase = true
