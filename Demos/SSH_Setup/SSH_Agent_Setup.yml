@@ -36,3 +36,13 @@
           fi
         backup: yes
 
+    - name: Update BASHRC File to look at bashrc.d directory
+      ansible.builtin.blockinfile:
+        path: /home/{{ linux_username }}/.ssh/config
+        marker: "##-- {mark} RH GLS SSH-Agent ANSIBLE MANAGED BLOCK --##"
+        block: |
+          Host *
+            IdentityFile ~/.ssh/lab_rsa
+            StrictHostKeyChecking no
+            AddKeysToAgent  yes
+            IdentityAgent ssh-agent        
