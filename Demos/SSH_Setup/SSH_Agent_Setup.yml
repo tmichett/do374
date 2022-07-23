@@ -1,0 +1,38 @@
+  ### Play to get system ready for creating Classroom Environments
+  ### Designed to be run from localhost
+- name: Setup System for Github with Tools
+  hosts: localhost
+  vars:
+    linux_username: student
+  tasks:
+
+## Create BASHRC File for Git SSH Agent
+    - name: Create a bashrc.d directory if it does not exist
+      ansible.builtin.file:
+        path: /home/{{ linux_username }}/.bashrc.d
+        state: directory
+        mode: '0775'
+
+    - name: Copy BASHRC SSH Agent Script
+      copy:
+        src: Files/ssh.bashrc
+        dest: /home/{{ linux_username }}/.bashrc.d/ssh.bashrc
+        mode: '0775'
+
+    - name: Update BASHRC File to look at bashrc.d directory
+      ansible.builtin.blockinfile:
+        path: /home/{{ linux_username }}/.bashrc
+        marker: "##-- {mark} RH GLS ANSIBLE MANAGED BLOCK --##"
+        block: |
+          #IBM/GLS Cloud Stuff
+          PATH="${HOME}/.local/bin:${HOME}/local/bin:${HOME}/bin:${PATH}"
+          export PATH
+          if [ -d ~/.bashrc.d ]; then
+            for rc in ~/.bashrc.d/*; do
+              if [ -f "$rc" ]; then
+                . "$rc"
+              fi
+            done
+          fi
+        backup: yes
+
