@@ -1,0 +1,13 @@
+---
+- name: Playbook to Fully Setup and Configure a Webserver
+  hosts: servera
+  become: true
+  vars: 
+    pkg_name:
+      - vim
+      - tree
+      - httpd
+  tasks:
+    - name: Include Deploy Package Role
+      include_role: 
+        name: tmichett.gls_collection_demo.deploy_packages      
