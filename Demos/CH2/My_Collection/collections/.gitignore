@@ -1,0 +1,3 @@
+roles/**
+!roles/requirements.yml
+collections/ansible_collections
