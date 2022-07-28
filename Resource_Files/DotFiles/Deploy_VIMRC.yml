@@ -1,0 +1,8 @@
+---
+- name: Deploy .vimrc
+  hosts: localhost
+  tasks:
+    - name: Deploy VIMRC to System
+      copy:
+        src: .vimrc
+        dest: ~/.vimrc

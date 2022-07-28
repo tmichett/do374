@@ -7,7 +7,25 @@
       - vim
       - tree
       - httpd
+    fw:
+      - fw_port: 8080
+        fw_proto: tcp
+      - fw_port: 9090
+        fw_proto: tcp
+    fw_svc:
+      - fw_svc_name: http
+      - fw_svc_name: https
+    svc:
+      - svc_name: httpd
+        svc_state: started
+        svc_enabled: yes
   tasks:
     - name: Include Deploy Package Role
       include_role: 
-        name: tmichett.gls_collection_demo.deploy_packages      
+        name: tmichett.gls_collection_demo.deploy_packages
+    - name: Include Manage Service Role
+      include_role:
+        name: tmichett.gls_collection_demo.manage_services
+    - name: Include Manage Firewall Role
+      include_role:
+        name: tmichett.gls_collection_demo.manage_firewall
