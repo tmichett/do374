@@ -1,6 +1,6 @@
 ---
 - name: Playbook to Fully Setup and Configure a Webserver
-  hosts: serverb
+  hosts: servera
   become: true
   vars: 
     pkg_name:
@@ -29,8 +29,3 @@
     - name: Include Manage Firewall Role
       include_role:
         name: tmichett.gls_collection_demo.manage_firewall
-
-- name: Import Playbook to deploy website content
-  import_playbook: Deploy_WS_Content.yml
-  vars:
-    ansible_host: serverb
