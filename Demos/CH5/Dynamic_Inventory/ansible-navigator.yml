@@ -1,0 +1,8 @@
+---
+ansible-navigator:
+  execution-environment:
+    image: ee-supported-rhel8:2.0
+    pull-policy: missing
+  logging:
+    file: /dev/null
+...
