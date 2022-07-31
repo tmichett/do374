@@ -55,7 +55,10 @@
 ** https://www.ansible.com/blog/automating-execution-environment-image-builds-with-github-actions
 
 
+== Ansible Galaxy
 
+* *Galaxy User Guide - Configuring Ansible Galaxy Client*
+** https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#configuring-the-ansible-galaxy-client
 
 == Ansible Navigator
 
