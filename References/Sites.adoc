@@ -1,6 +1,43 @@
 = References
 
 
+== Ansible Roles, Collections, and Content
+
+* *Ansible Collections Overview*
+** https://github.com/ansible-collections/overview/blob/main/README.rst
+
+* *Introduction to RHEL System Roles*
+** https://www.redhat.com/en/blog/introduction-rhel-system-roles
+
+* *Ansible Galaxy: Collections and Roles*
+** https://docs.rockylinux.org/books/learning_ansible/04-ansible-galaxy/
+
+* *Ansible Collection Index*
+** https://docs.ansible.com/ansible/latest/collections/index.html#list-of-collections
+
+* *Ansible Module Mapping - Where have all the modules gone??*
+** https://github.com/ansible/ansible/blob/devel/lib/ansible/config/ansible_builtin_runtime.yml
+
+* *Ansible Posix Collection*
+** https://github.com/ansible-collections/ansible.posix
+
+* *Ansible Automation Platform Certified Content*
+** https://access.redhat.com/articles/3642632
+
+* *Migrating to Ansible Collections*
+** https://www.ansible.com/hubfs/Webinar%20PDF%20slides/2020-Dec-08--Webinar%20Migrating%20to%20Ansible%20Collections.pdf
+
+* *Ansible Netcommon*
+** https://github.com/ansible-collections/ansible.netcommon/blob/main/meta/runtime.yml
+
+
+* *Creating collections*
+** https://docs.ansible.com/ansible/devel/dev_guide/developing_collections_creating.html#creating-collections-skeleton
+
+
+* *Using collections*
+** https://docs.ansible.com/ansible/latest/user_guide/collections_using.html
+
 == Ansible Automation Platform (AAP 2)
 
 * *Introducing Ansible Automation Platform 2*
@@ -9,11 +46,15 @@
 * *What's new in Ansible Automation Platform 2: private automation hub*
 ** https://www.ansible.com/blog/whats-new-in-ansible-automation-platform-2-private-automation-hub
 
+* *Introducing Red Hat Ansible Automation Platform 2.1*
+** https://www.ansible.com/blog/introducing-red-hat-ansible-automation-platform-2.1
 
 == Execution Environments
 
 * *Automating execution environment image builds with GitHub Actions*
 ** https://www.ansible.com/blog/automating-execution-environment-image-builds-with-github-actions
+
+
 
 
 == Ansible Navigator
@@ -24,12 +65,33 @@
 * *Ansible Navigator Settings*
 ** https://ansible-navigator.readthedocs.io/en/latest/settings/
 
+* *Ansible Navigator Cheat Sheet*
+** https://www.techbeatly.com/ansible-navigator-cheat-sheet/
+
+
+.Ansible Navigator Settings
+[TIP]
+======
+
+With AAP 2.0 release, *ansible-navigator* can dump settings.
+
+[source,bash]
+----
+ansible-navigator settings --sample
+----
+
+https://github.com/ansible/ansible-navigator/issues/611
+======
 
 == Ansible Automation Hub
 
 * *To Install & configure the Ansible Ansible Automation Hub*
 ** https://www.jazakallah.info/post/to-install-configure-the-ansible-ansible-automation-hub
 
+== Ansible Builder
+
+* *Introduction to Ansible Builder*
+** https://www.ansible.com/blog/introduction-to-ansible-builder
 
 == Github
 
@@ -62,3 +124,35 @@ Alternatively, populate the GH_TOKEN environment variable with a GitHub API auth
 The Jenkins jobs use *pre-commit* rules to check items before running. Failure to pass these checks will result in Jenkins build failures. Instructions for using *pre-commit* are in the text, but it might be recommended and easier to enable *pre-commit* automatically.
 
 *automatically enabling pre-commit on repositories*: https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories
+
+== Ansible Real-World Examples and Articles
+
+* *awx_pod - Github Project Ansible AWX in Containers*
+** https://github.com/ikke-t/awx_pod
+
+* *How I used Ansible to automate updates at home*
+** https://www.redhat.com/sysadmin/ansible-automate-updates-home
+
+* *Install Ansible AWX on CentOS 8 / Rocky Linux 8*
+** https://computingforgeeks.com/install-and-configure-ansible-awx-on-centos/
+
+* *Ansible Blender*
+** https://github.com/TomasTomecek/ansible-bender
+
+* *Streamlining AWS Deployments with Python & Ansible Part I*
+** https://www.capitalone.com/tech/cloud/python-ansible-aws-building-ansible-playbooks/
+
+* *Streamlining AWS Deployments with Python & Ansible Part II*
+** https://www.capitalone.com/tech/cloud/python-ansible-aws-unit-testing-ansible-modules/
+
+* *Streamlining AWS Deployments with Python & Ansible Part III*
+** https://www.capitalone.com/tech/cloud/python-ansible-aws-refactoring-code/
+
+== Other Ansbile Examples and Repositories (from other Instructors)
+
+* https://eenfach.de/gitblit/tree/rht!rh294.git
+
+== Python
+
+* *How to install Python 3 on Red Hat Enterprise Linux*
+** https://developers.redhat.com/blog/2018/08/13/install-python3-rhel?source=sso#tl_dr
