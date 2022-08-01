@@ -1,0 +1,42 @@
+---
+- name: Playbook to Configure Controller with Job Templates for Workflow Demo
+  hosts: localhost
+  tasks:
+
+    - name: Create NYPD Dev Webserver job template
+      awx.awx.job_template:
+        name: "NYPD DEV Web"
+        job_type: "run"
+        organization: "NYPD"
+        inventory: "NYPD Web Workflow"
+        project: "NYPD Webserver"
+        playbook: "Future/NYPD/NYPD_Web_Workflow.yml"
+        credentials:
+          - "NYPD Machine SSH Creds"
+        state: "present"
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        become_enabled: true
+        extra_vars:
+          inv_host_var: servere
+        execution_environment: Ansible Engine 2.9 execution environment
+
+    - name: Create NYPD Test Webserver job template
+      awx.awx.job_template:
+        name: "NYPD Test Web"
+        job_type: "run"
+        organization: "NYPD"
+        inventory: "NYPD Web Workflow"
+        project: "NYPD Webserver"
+        playbook: "Future/NYPD/NYPD_Web_Workflow.yml"
+        credentials:
+          - "NYPD Machine SSH Creds"
+        state: "present"
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        become_enabled: true
+        extra_vars:
+          inv_host_var: serverf
+        execution_environment: Ansible Engine 2.9 execution environment

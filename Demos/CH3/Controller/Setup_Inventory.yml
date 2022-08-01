@@ -1,0 +1,27 @@
+---
+- name: Playbook to Configure Controller with a Project-Based inventory Source for the Job Template Workflow Demo
+  hosts: localhost
+  tasks:
+
+    - name: Create NYPD Web Workflow Inventory
+      awx.awx.inventory:
+        name: "NYPD Web Workflow"
+        organization: "NYPD"
+        state: "present"
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+
+
+    - name: Create NYPD Project Inventory -  Source
+      awx.awx.inventory_source:
+        name: "NYPD Project Inventory"
+        organization: "NYPD"
+        inventory: "NYPD Web Workflow"
+        source_project: "NYPD Webserver"
+        source: scm
+        source_path: "Future/NYPD/inventory"
+        state: "present"
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com

@@ -1,0 +1,15 @@
+---
+- name: IP filters
+  hosts: localhost
+  vars_files:
+    - sources.yml
+  gather_facts: no
+  tasks:
+    - name: Capture ip address from a string
+      vars:
+        content: "{{ lookup ('file',item) }}"
+        ips: "{{ content | regex_findall('\\b(?:[0-9]{1,3}\\.){3}[0-9]{1,3}\\b') }}"
+      template:
+        src: template.txt.j2
+        dest: "{{item}}.txt"
+      loop: "{{ files }}"

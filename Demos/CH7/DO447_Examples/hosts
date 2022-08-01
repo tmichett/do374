@@ -1,0 +1,18 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+172.25.254.254	classroom.example.com classroom
+172.25.254.254	content.example.com content
+172.25.254.254	materials.example.com materials
+### rht-vm-hosts file listing the entries to be appended to /etc/hosts
+
+172.25.250.8    utility.lab.example.com utility git.lab.example.com git
+172.25.250.7    tower.lab.example.com tower
+172.25.250.10   servera.lab.example.com servera
+172.25.250.11   serverb.lab.example.com serverb
+172.25.250.12   serverc.lab.example.com serverc
+172.25.250.13   serverd.lab.example.com serverd
+172.25.250.14   servere.lab.example.com servere
+172.25.250.15   serverf.lab.example.com serverf
+172.25.250.254  bastion.lab.example.com bastion 
+172.25.250.9    workstation.lab.example.com workstation
