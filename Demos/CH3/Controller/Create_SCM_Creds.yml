@@ -1,0 +1,19 @@
+---
+- name: Create Credentials
+  hosts: localhost
+
+  tasks:
+
+    - name: Create SCM Credential
+      ansible.controller.credential:
+        name: "Travis GH PAT Credential"
+        description: "Travis Github Token"
+        state: present
+        organization: DO374_Demo
+        credential_type: GitLab Personal Access Token
+        inputs:
+          token: test
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        state: present
