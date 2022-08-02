@@ -3,24 +3,24 @@
   hosts: localhost
   tasks:
 
-    - name: Create NYPD Web Workflow Inventory
+    - name: Create DO374 Inventory
       awx.awx.inventory:
-        name: "NYPD Web Workflow"
-        organization: "NYPD"
+        name: "DO374 Web Workflow"
+        organization: "DO374_Demo"
         state: "present"
         controller_username: admin
         controller_password: redhat
         controller_host: https://controller.lab.example.com
 
 
-    - name: Create NYPD Project Inventory -  Source
+    - name: Create DO374 Project Inventory -  Source
       awx.awx.inventory_source:
-        name: "NYPD Project Inventory"
-        organization: "NYPD"
-        inventory: "NYPD Web Workflow"
-        source_project: "NYPD Webserver"
+        name: "DO374 Project Inventory"
+        organization: "DO374_Demo"
+        inventory: "DO374 Web Workflow"
+        source_project: "DO374"
         source: scm
-        source_path: "Future/NYPD/inventory"
+        source_path: "Demos/CH3/inventory"
         state: "present"
         controller_username: admin
         controller_password: redhat

@@ -4,3 +4,6 @@ servera
 
 [servers:children]
 webservers
+
+[webservers:vars]
+username=travis
