@@ -1,0 +1,20 @@
+---
+- name: Create Credentials
+  hosts: localhost
+
+  tasks:
+
+    - name: Create Machine Credential
+      ansible.controller.credential:
+        name: "DO374 Machine Credentials"
+        description: "SSH Username and Password"
+        state: present
+        organization: DO374_Demo
+        credential_type: Machine
+        inputs:
+          username: root
+          password: root
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        state: present
