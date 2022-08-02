@@ -1,0 +1,16 @@
+---
+- name: Demonstrate Variables and Filters to Process Variables
+  hosts: localhost
+  gather_facts: no
+  vars_files: 
+    - vars.yml
+    - vars_list.yml
+  tasks:
+    - name: Demo List sorted without duplicates  
+      debug:
+        msg: The value of demo_list sorted and without duplicates is {{ demo_list | sort | unique }}
+
+    - name: Test spacing for ()
+      assert:
+        that:
+          - "{{ demo_list | sort | unique }} is eq(['1', '2', '3', '4', '5', '6', 'Susan', 'Travis'])"

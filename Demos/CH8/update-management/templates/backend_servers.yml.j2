@@ -1,0 +1,8 @@
+# All backend servers in this 
+# project will be on port 80.
+#
+
+{% for server in  servers %}
+- name: {{ server }}
+  port: 80 
+{% endfor %}

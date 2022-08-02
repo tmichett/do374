@@ -1,0 +1,21 @@
+---
+# defaults file for webapp
+
+# The directory on the web server where you
+# deploy the web application
+webapp_content_dir: /var/www/html
+
+
+# The git repository for the web application you
+# deploy to the web servers.
+webapp_repo: "http://git.lab.example.com:8081/git/example.git"
+
+
+# The branch or tag for the version of the application
+# you deploy.
+#
+# Ex:
+# webapp_version: master
+# webapp_version: v1.0
+webapp_version: master
+

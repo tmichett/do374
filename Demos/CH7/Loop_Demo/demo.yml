@@ -1,0 +1,53 @@
+- name: Demo of Nested Loops
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - user.yaml
+  vars:
+    paul_pass: test
+    john_pass: test
+
+  tasks:
+
+    - name: Extract the value of nested items
+      debug:
+        msg: The value for user is "{{ item.0.name }}" and the value for the key in the book is "{{ lookup('list', item.1) }}".
+      loop: "{{ users | subelements('authorized') }}"
+
+    - name: Pause for discussion
+      pause: 
+        prompt: Pausing for discussion and effect ...
+
+
+    - name: Extract the value of nested items
+      debug:
+        msg: The value for the variable is "{{ users | map(attribute='mysql') | list }}".
+   #   loop: "{{ users }}"
+   
+### Testing without the loop on accessing information
+### Setting up a variable
+
+    - name: Setup as MySQL fact
+      set_fact:
+        mysql_fact: "{{ users | map(attribute='mysql') | list }}"
+
+    - name: Value of MySQL Fact
+      debug:
+        msg: The value of MySQL in the list of lists of dictionaries for the example is {{ mysql_fact }} 
+
+
+    - name: The second element is/are (whatever correct English is) Hosts
+      debug:
+        msg: The value of MySQL in the list of lists of dictionaries for the example is {{ mysql_fact | map(attribute='hosts') | list }}        
+
+    - name: Setup as a MySQL Host fact
+      set_fact:
+        mysql_host_fact: "{{ mysql_fact | map(attribute='hosts') | list }}"
+
+    - name: Value of MySQL Host Fact
+      debug:
+        msg: "{{ mysql_host_fact }}"
+
+    - name: The value we want is ...
+      debug:
+        msg: The value for second set of IPs is {{ mysql_host_fact.0.1 }}

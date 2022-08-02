@@ -1,0 +1,18 @@
+all:
+  children:
+    region_eu:
+      hosts:
+        serverc.lab.example.com: {}
+        serverf.lab.example.com: {}
+    ungrouped: {}
+    web_servers:
+      children:
+        active_web_servers:
+          hosts:
+            serverb.lab.example.com: {}
+            serverc.lab.example.com: {}
+        inactive_web_servers:
+          hosts:
+            serverd.lab.example.com: {}
+            servere.lab.example.com: {}
+            serverf.lab.example.com: {}

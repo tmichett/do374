@@ -1,0 +1,10 @@
+
+- name: Deploy HAProxy
+  import_playbook: deploy_haproxy.yml
+
+- name: Deploy Web Server
+  import_playbook: deploy_apache.yml
+
+- name: Deploy Web App
+  import_playbook: deploy_webapp.yml
+

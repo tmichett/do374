@@ -1,0 +1,20 @@
+---
+- name: Demo of Forks=4 Serial=Not Set entire inventory (4)
+  hosts: webservers
+  gather_facts: no
+
+  tasks:
+    - name: Demo Message
+      debug:
+        msg: I'm running this with Forks=4 and Serial isn't set so entire inventory
+
+#    - name: Introduce a sleep and pause to the system
+#      pause:
+#        seconds: 10
+
+    - name: Introduce a sleep and pause to the system for 10 seconds
+      shell: sleep 10
+
+    - name: Pause to show end of play in playbook
+      pause:
+        prompt: "This is the end of the play and set of tasks in the playbook, hit ENTER to continue"      

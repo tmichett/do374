@@ -1,0 +1,23 @@
+active_web_servers:
+  hosts:
+    server[b:c].lab.example.com:
+
+inactive_web_servers:
+  hosts:
+    server[d:f].lab.example.com:
+
+region_eu:
+  hosts:
+    serverc.lab.example.com:
+    serverf.lab.example.com:
+
+web_servers:
+  children:
+    active_web_servers:
+    inactive_web_servers:
+
+all_servers:
+  hosts:
+    servera.lab.example.com:
+  children:
+    web_servers:

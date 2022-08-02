@@ -1,0 +1,10 @@
+- name: Ensure HAProxy is deployed
+  hosts: lb_servers
+  force_handlers: True
+
+  roles:
+    # The "haproxy" role has a dependency on the "firewall" role.
+    # The "firewall" role requires a "firewall_rules" variable be defined.
+    - role: haproxy
+
+

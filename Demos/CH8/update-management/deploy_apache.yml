@@ -1,0 +1,14 @@
+---
+
+- name: Ensure Apache is deployed
+  hosts: web_servers
+  force_handlers: True
+  gather_facts: no
+
+  roles:
+    # Use the apache_firewall_rules.yml.j2 template to
+    # generate the firewall rules.
+    - role: apache
+      firewall_rules: "{{ lookup('template', tfile) | from_yaml }}"
+      tfile: apache_firewall_rules.yml.j2
+

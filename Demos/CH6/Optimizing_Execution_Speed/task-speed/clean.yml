@@ -1,0 +1,34 @@
+---
+- name: Clean Web Servers
+  hosts: web_servers
+  become: True
+  gather_facts: False
+
+  tasks:
+
+    - name: Ensure the services are enabled
+      service:
+        name: "{{ item }}"
+        state: stopped
+        enabled: False
+      loop:
+        - httpd
+        - mariadb
+
+    - name: Ensure the packages are removed
+      yum:
+        name:
+          - httpd
+          - mod_ssl
+          - httpd-tools
+          - mariadb-server
+          - mariadb
+          - php
+          - php-mysqlnd
+        state: absent
+        autoremove: True
+
+    - name: Ensure the web content is removed
+      file:
+        path: /var/www/html/
+        state: absent

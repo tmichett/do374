@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  tasks:
+    - service:
+        name: httpd
+        enabled: no
+        state: stopped
+    - yum:
+        name: httpd
+        state: absent

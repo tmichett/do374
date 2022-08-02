@@ -1,0 +1,37 @@
+---
+# tasks file for webapp
+
+- name: Ensure stub web content is deployed
+  copy:
+    content: "{{ webapp_message }} (version {{ webapp_version }})\n"
+    dest: "{{ webapp_content_root_dir }}/index.html"
+
+- name: Find deployed webapp files
+  find:
+    paths: "{{ webapp_content_root_dir }}"
+    recurse: yes
+  register: webapp_find_files
+
+- name: Debug output
+  debug:
+    var: webapp_find_files 
+
+- name: Compute the webapp file list
+  set_fact:
+    webapp_deployed_files: "{{ webapp_find_files['files'] | map(attribute='path') | list }}" 
+
+- name: Show me the mapped stuff
+  debug:
+    msg: "The web files deployed are {{ webapp_deployed_files }} and that is all"
+
+- name: Compute the relative webapp file list
+  set_fact:
+    webapp_rel_deployed_files: "{{ webapp_deployed_files | map('relpath', webapp_content_root_dir) | list }}"
+
+- name: Remove Extraneous Files
+  file:
+    path: "{{ webapp_content_root_dir }}/{{ item }}"
+    state: absent
+  loop: "{{ webapp_rel_deployed_files | difference(webapp_file_list) }}" 
+
+

@@ -1,0 +1,8 @@
+[lb_servers]
+loadbalancer_01  ansible_host=servera.lab.example.com
+
+[web_servers]
+webserver_01  ansible_host=serverb.lab.example.com
+webserver_02  ansible_host=serverc.lab.example.com
+
+

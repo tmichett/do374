@@ -1,0 +1,39 @@
+---
+- hosts: web_servers
+  serial:
+    - 1
+    - 25%
+    - 100%
+
+  pre_tasks:
+    - name: Remove web server from service during the update
+      haproxy:
+        state: disabled
+        backend: app
+        host: "{{ inventory_hostname }}"
+      delegate_to: "{{ item }}"
+      with_items: "{{ groups['lb_servers'] }}"
+
+  roles:
+  - role: webapp
+
+  post_tasks:
+    # Firewall rules dictate that requests to backend web
+    # servers must originate from a load balancer.
+    - name: Smoke Test - Ensure HTTP 200 OK
+      uri:
+        url: "http://{{ inventory_hostname }}:{{ apache_port }}"
+        status_code: 200
+      delegate_to: "{{ groups['lb_servers'][0] }}"
+      become: no
+
+    # If the test fails, servers are not re-enabled
+    # in the load balancers, and the update process halts.
+    - name: Enable healthy server in load balancers
+      haproxy:
+        state: enabled
+        backend: app
+        host: "{{ inventory_hostname }}"
+      delegate_to: "{{ item }}"
+      with_items: "{{ groups['lb_servers'] }}"
+

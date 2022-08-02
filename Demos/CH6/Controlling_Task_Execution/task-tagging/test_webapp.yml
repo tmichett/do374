@@ -1,0 +1,21 @@
+---
+- name: Web application smoke test
+  hosts: web_servers
+  gather_facts: no
+  tasks:
+    - name: Verify content of http://localhost
+      uri:
+        url: http://localhost
+        return_content: yes
+      register: test_url
+      failed_when: "'Hello from' not in test_url.content"
+      tags:
+        - tests
+        - demo
+
+    - name: Demo for RHU
+      debug:
+        msg: This is a demo for RHU on tagging.
+      tags:
+        - rhu
+        - demo

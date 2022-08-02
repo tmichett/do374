@@ -1,0 +1,10 @@
+lb_servers:
+  hosts:
+    load_balancer:
+      ansible_host: servera.lab.example.com
+
+web_servers:
+  hosts:
+    server[b:c].lab.example.com:
+
+

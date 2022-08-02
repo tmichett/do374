@@ -1,0 +1,28 @@
+# Default variables for the apache role.
+
+# The 'apache_additional_packages' variable
+# allows you to specify additional
+# optional packages that must be present on
+# the web server.
+#
+# As an example, to enable a web server
+# to clone a source code repository, and execute a
+# PHP application that connects to a MySQL database:
+#
+# apache_optional_packages:
+#   - php
+#   - git
+#   - php-mysqlnd
+#
+# By default, no optional packages are installed.
+apache_optional_packages: []
+
+
+# Use the 'apache_enablerepos_list'
+#  variable to enable additional yum
+#  repositories for package installation.
+#
+# By default, no additional
+#   repositories are enabled.
+apache_enablerepos_list: []
+

@@ -1,0 +1,68 @@
+#---------------------------------------------------------------------
+# Global settings
+#---------------------------------------------------------------------
+global
+    #Send events/messages to rsyslog server.
+    log         127.0.0.1:514 local0 {{ haproxy_log_level }}
+
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        haproxy
+    group       haproxy
+    daemon
+
+   #state changes due to API calls are stored in this file.
+   server-state-file /usr/local/haproxy/haproxy.state
+
+    # turn on stats unix socket
+    #  required for the ansible haproxy module.
+    stats socket {{ haproxy_socket }} level admin
+
+    # utilize system-wide crypto-policies
+    ssl-default-bind-ciphers PROFILE=SYSTEM
+    ssl-default-server-ciphers PROFILE=SYSTEM
+
+#---------------------------------------------------------------------
+# common defaults that all the 'listen' and 'backend' sections will
+# use if not designated in their block
+#---------------------------------------------------------------------
+defaults
+    mode                        http
+    log                         global
+    option                      httplog
+    option                      dontlognull
+    option http-server-close
+    option forwardfor           except 127.0.0.0/8
+    option                      redispatch
+    retries                     3
+    timeout http-request        10s
+    timeout queue               1m
+    timeout connect             10s
+    timeout client              1m
+    timeout server              1m
+    timeout http-keep-alive     10s
+    timeout check               10s
+    maxconn                     3000
+
+    #Loads state changes from the state file.
+    load-server-state-from-file global
+
+#---------------------------------------------------------------------
+# main frontend which proxys to the backends
+#---------------------------------------------------------------------
+frontend main
+    mode http
+    bind *:{{ haproxy_port }}
+    default_backend {{ haproxy_backend_name }}
+
+#---------------------------------------------------------------------
+# round robin balancing between the various backends
+#---------------------------------------------------------------------
+backend {{ haproxy_backend_name }}
+    balance roundrobin
+{% for server in haproxy_appservers %}
+    server {{ server.name }} {{ server.ip }}:{{ server.backend_port }}
+{% endfor %}
+
+

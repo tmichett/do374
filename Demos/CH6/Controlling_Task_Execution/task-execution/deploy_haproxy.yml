@@ -1,0 +1,36 @@
+- name: Ensure HAProxy is deployed
+  hosts: lb_servers
+  force_handlers: True
+
+  pre_tasks:
+    - name: Setting the maintenance message
+      copy:
+        dest: /etc/motd.d/maintenance
+        content: "Maintenance in progress\n"
+
+  roles:
+    # The "haproxy" role has a dependency on the "firewall" role.
+    # The "firewall" role requires a "firewall_rules" variable be defined.
+    - role: haproxy
+
+  post_tasks:
+    - name: Removing the maintenance message
+      file:
+        path: /etc/motd.d/maintenance
+        state: absent
+
+  handlers:
+    - name: Sending an email to student
+      mail:
+        subject: "HAProxy reloaded on {{ inventory_hostname }}"
+        to: student@workstation.lab.example.com
+      delegate_to: localhost
+      become: false
+      listen: reload haproxy
+
+    - name: Logging a message to syslog
+      syslogger:
+        msg: "HAProxy reloaded on {{ inventory_hostname }}"
+      delegate_to: localhost
+      become: false
+      listen: reload haproxy

@@ -1,0 +1,28 @@
+
+# A list of all files required by
+# the web application.
+#
+# The list is relative to the
+# installed location of content
+# on the web server. For example,
+# if the content root directory
+# is:
+#   /var/www/html
+#
+# then the
+#
+# the file:
+#   /var/www/html/index.html
+#
+# should just index.html
+#
+# The list below is a list with
+# only one file for stub
+# webapp content.
+webapp_file_list:
+  - index.html
+
+# TODO: compute 'webapp_file_list'
+# from git repository contents
+# instead.
+

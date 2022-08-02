@@ -1,0 +1,3 @@
+<?php
+echo This is {{ ansible_hostname }}. (version {{ webapp_version}}) 
+?>

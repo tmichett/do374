@@ -1,0 +1,41 @@
+---
+# tasks file for apache
+
+- name: Apache Port Check
+  assert:
+    that:
+      - apache_port in apache_standard_ports_list
+    fail_msg: "{{ tmp_msg}}: {{ apache_standard_ports_list }}"
+    success_msg: The specified apache port ({{ apache_port }}) is allowed.
+  vars:
+    tmp_msg: "'apache_port' value ({{ apache_port }}) is not in the list"
+
+- name: Install http
+  yum:
+    name:
+      - httpd
+      - php
+      - git
+      - php-mysqlnd
+    state: present
+
+- name: Configure SELinux to allow httpd to connect to remote database
+  seboolean:
+    name: httpd_can_network_connect_db
+    state: true
+    persistent: yes
+
+- name: http service state
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: Custom Configuration
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+  notify: restart httpd
+
+
+

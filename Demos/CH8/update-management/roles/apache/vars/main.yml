@@ -1,0 +1,10 @@
+---
+# vars file for apache
+
+apache_standard_ports_list:
+  - 80
+  - 443
+  - 488
+  - 8008
+  - 8009
+  - 8443

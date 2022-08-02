@@ -1,0 +1,19 @@
+[lb_servers]
+servera.lab.example.com
+
+[web_servers]
+
+[web_servers:children]
+a_web_servers
+b_web_servers
+
+
+# Group "A" of Web Servers
+[a_web_servers]
+serverb.lab.example.com
+
+
+# Group "B" of Web Servers
+[b_web_servers]
+serverc.lab.example.com
+

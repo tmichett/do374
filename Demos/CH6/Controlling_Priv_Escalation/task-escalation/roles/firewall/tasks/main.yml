@@ -1,0 +1,15 @@
+---
+# tasks file for firewall
+
+- name: Ensure Firewall Sources Configuration
+  firewalld:
+    source: "{{ item.source if item.source is defined else omit }}"
+    zone: "{{ item.zone if item.zone is defined else omit }}"
+    permanent: true
+    state: "{{ item.state | default('enabled') }}"
+    service: "{{ item.service if item.service is defined else omit }}"
+    immediate: true
+    port: "{{ item.port if item.port is defined else omit }}"
+  loop: "{{ firewall_rules }}"
+  notify: reload firewalld
+  become: true

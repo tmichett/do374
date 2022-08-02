@@ -1,0 +1,7 @@
+firewall_rules:
+  # Allow http requests from the load_balancer.
+  - zone: internal
+    service: http
+    source: "172.25.250.10"
+
+

@@ -1,0 +1,25 @@
+---
+# tasks file for apache
+
+- name: Calculate the package list
+  set_fact:
+    apache_package_list: "{{ apache_base_packages | union(apache_optional_packages) }}"
+
+- name: Ensure httpd packages are installed
+  yum:
+    name: "{{ apache_package_list }}"
+    state: present
+    enablerepo: "{{ apache_enablerepos_list | default(omit,true) }}"
+
+- name: Ensure SELinux allows httpd connections to a remote database
+  seboolean:
+    name: httpd_can_network_connect_db
+    state: true
+    persistent: yes
+
+- name: Ensure httpd service is started and enabled
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+

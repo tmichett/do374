@@ -1,0 +1,4 @@
+apache_optional_packages:
+  - git
+  - php
+  - php-mysqlnd

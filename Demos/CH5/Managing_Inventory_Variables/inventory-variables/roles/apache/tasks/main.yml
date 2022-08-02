@@ -1,0 +1,24 @@
+---
+# tasks file for apache
+
+- name: Install http
+  yum:
+    name:
+      - httpd
+      - php
+      - git
+      - php-mysqlnd
+    state: present
+
+- name: Configure SELinux to allow httpd to connect to remote database
+  seboolean:
+    name: httpd_can_network_connect_db
+    state: true
+    persistent: yes
+
+- name: http service state
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+

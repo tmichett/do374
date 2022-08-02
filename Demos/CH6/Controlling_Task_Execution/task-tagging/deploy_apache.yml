@@ -1,0 +1,10 @@
+- name: Ensure Apache is deployed
+  hosts: web_servers
+  force_handlers: true
+  gather_facts: false
+
+  roles:
+    # The "apache" role has a dependency on the "firewall" role.
+    # The "firewall" role requires a "firewall_rules" variable be defined.
+    - role: apache
+

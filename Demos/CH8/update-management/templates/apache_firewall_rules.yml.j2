@@ -1,0 +1,11 @@
+#Constructing the value of the
+# firewall_rules variable for the
+# firewall role.
+
+- port: {{ apache_port }}
+  protocol: TCP
+  zone: internal
+{% for load_balancer in groups['lb_servers'] %}
+- zone: internal
+  source: "{{ lookup('dig', load_balancer) }}"
+{% endfor %}

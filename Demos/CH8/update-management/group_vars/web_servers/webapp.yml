@@ -1,0 +1,4 @@
+
+webapp_repo: http://git.lab.example.com:8081/git/simple-webapp.git
+webapp_version: v1.0
+

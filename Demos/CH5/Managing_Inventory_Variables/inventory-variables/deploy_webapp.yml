@@ -1,0 +1,9 @@
+- name: Ensure Web App is deployed
+  hosts: web_servers
+  vars:
+    - webapp_version: v1.0
+
+  roles:
+    - role: webapp
+
+

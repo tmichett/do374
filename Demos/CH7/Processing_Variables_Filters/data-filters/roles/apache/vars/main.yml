@@ -1,0 +1,6 @@
+
+# Below variable contains the minimal
+#   required packages for apache.
+apache_base_packages:
+  - httpd
+

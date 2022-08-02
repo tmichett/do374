@@ -1,0 +1,18 @@
+# defaults file for haproxy
+
+# Log-level for HAProxy logs
+haproxy_log_level: info
+
+# Port exposed to clients
+# haproxy_port: 80
+# Defined in all/haproxy.yml
+
+
+# Port of backend apache server
+# - below is commented out
+#   because the haproxy_backend_port
+#   is defined in terms of other
+#   playbook variables in the
+#   deploy_apache.yml playbook.
+#haproxy_backend_port: 8081
+

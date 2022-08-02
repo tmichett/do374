@@ -1,0 +1,3 @@
+webapp_message: "This is {{ inventory_hostname }}."
+webapp_version: v1.0
+

@@ -1,0 +1,26 @@
+---
+# defaults file for firewall
+
+
+# This role requires that firewall_rules variable
+# be defined. The variable is a list of rules, and
+# each rule defines:
+#
+#   service: (optional)
+#   port:    (optional)
+#   zone:    (optional)
+#   source:  (optional)
+#
+# A rule should only define a service or a port.
+# And example definition is:
+#
+# firewall_rules:
+#   - service: http
+#     zone: internal
+#   - port: 8443
+#     source: 192.168.0.2
+
+# By default, no rules are implemented.
+firewall_rules: []
+
+

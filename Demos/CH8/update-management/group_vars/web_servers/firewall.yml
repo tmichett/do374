@@ -1,0 +1,11 @@
+# The firewall_rules variable is not defined here,
+# but in the "deploy_apache.yml" playbook.
+#
+# That playbook generates a list of rules based
+# other project variables and facts.
+#
+# As an example, a firewall rule is generated
+# to allow requests from the load balancers.
+#
+# Because this configuration is potentially dynamic,
+# it is not included here.

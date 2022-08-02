@@ -1,0 +1,32 @@
+---
+# defaults file for haproxy
+
+#Log-level for HAProxy logs
+haproxy_log_level: info
+
+#Frontend port exposed to clients
+haproxy_port: 80
+
+####################
+#Backend variables
+####################
+# The name of the backend pool of servers.
+haproxy_backend_name: app
+
+# The haproxy backend port is port for the backend
+# web servers.  Should be one of the standard
+# ports for HTTP.  See vars/main.yml for the list.
+haproxy_backend_port: 80
+
+# The haproxy backend pool is a list of backend
+# servers that haproxy balances requests to.
+# These machines can be set to enabled or disabled.
+haproxy_backend_pool: []
+
+# The haproxy_active_backends is a list of those
+# machines in the backend pool that should be
+# active and enabled from the backend pool.
+# Any machine not in this list but in the
+# haproxy_backend_pool is list is set to disabled.
+haproxy_active_backends: []
+

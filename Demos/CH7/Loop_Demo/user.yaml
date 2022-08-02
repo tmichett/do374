@@ -1,0 +1,26 @@
+users:
+  - name: paul
+    password: "{{ paul_pass }}"
+    authorized:
+      - keys/paul_key1.pub
+      - keys/paul_key2.pub
+    mysql:
+      hosts: 
+        - "%"
+        - "127.0.0.1"
+        - "::1"
+        - "localhost"
+    groups:
+      - wheel
+
+  - name: john
+    password: "{{ john_pass }}"
+    authorized:
+      - keys/john_key.pub
+    mysql:
+      password: other-mysql-password
+      hosts:
+         - "utility"
+    groups:
+      - wheel
+      - devops

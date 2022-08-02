@@ -1,0 +1,31 @@
+---
+- name: Deploy the web servers
+  hosts: web_servers
+  become: True
+  gather_facts: False
+
+  tasks:
+    - name: Ensure required packages are installed
+      yum:
+        name: 
+          - httpd
+          - mod_ssl
+          - httpd-tools
+          - mariadb-server
+          - mariadb
+          - php
+          - php-mysqlnd
+        state: present
+    - name: Ensure the services are enabled
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: True
+      loop:
+        - httpd
+        - mariadb
+
+    - name: Ensure the web content is installed
+      synchronize:
+        src: web_content/
+        dest: /var/www/html

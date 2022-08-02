@@ -1,0 +1,13 @@
+---
+
+- name: Ensure HAProxy is deployed
+  hosts: lb_servers
+  roles:
+
+    - role: firewall
+      firewall_rules:
+        - port: "{{ haproxy_port }}"
+          protocol: tcp
+          state: disabled
+
+

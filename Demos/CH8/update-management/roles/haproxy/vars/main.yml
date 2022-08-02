@@ -1,0 +1,8 @@
+---
+# vars file for haproxy
+
+#Socket used to communicate with haproxy service.
+# DO NOT CHANGE
+haproxy_socket: /var/run/haproxy.sock
+
+

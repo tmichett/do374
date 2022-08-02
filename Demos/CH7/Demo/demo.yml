@@ -1,0 +1,93 @@
+---
+- name: Demonstrate Variables and Filters to Process Variables
+  hosts: localhost
+  gather_facts: no
+  vars_files: 
+    - vars.yml
+    - vars_list.yml
+  tasks:
+
+  ## Output the Value of Variables
+
+    - name: Output value of first_name
+      debug:
+        msg: The value of first_name is {{ first_name }}
+
+    - name: Output value of last_name
+      debug:
+        msg: The value of last_name is {{ last_name }}
+
+    - name: Output value of username
+      debug:
+        msg: The value of username is {{ username }}      
+
+    - name: Pause for effect and explanation
+      pause:
+        prompt: "Discuss output and then hit Enter"
+
+
+  ## Output the Value of Variables after Formatting
+
+    - name: Output value of first_name after filters applied
+      debug:
+        msg: The value of first_name is {{ first_name | capitalize }}
+
+    - name: Output value of last_name after filters applied
+      debug:
+        msg: The value of last_name is {{ last_name | capitalize }}
+
+    - name: Output value of username after filters applied
+      debug:
+        msg: The value of username is {{ username | lower }}
+
+    - name: Pause for effect and explanation      
+      pause:
+        prompt: "Discuss output and then hit Enter"
+
+### Multiple filters applied to preocess variables
+###
+    - name: Output value of demo_test before filters applied
+      debug:
+        msg: The value of demo_test is {{ demo_test }}
+
+    - name: Output value of demo_test after filters applied
+      debug:
+        msg: The value of demo_test is {{ demo_test | lower | capitalize }}
+
+    - name: Pause for effect and explanation
+      pause:
+        prompt: "Discuss output and then hit Enter"        
+
+### Sorting and manipulation
+#
+    - name: Output values of demo_list
+      debug:
+        msg: The value of demo_list is {{ demo_list }}
+
+    - name: Pause for effect and explanation
+      pause:
+        prompt: "Discuss output and then hit Enter"        
+
+    - name: Output values of demo_list without duplicates
+      debug:
+        msg: The value of demo_list without duplicates is {{ demo_list | unique }}
+
+    - name: Pause for effect and explanation
+      pause:
+        prompt: "Discuss output and then hit Enter"
+
+    - name: Output values of demo_list sorted
+      debug:
+        msg: The value of demo_list sorted is {{ demo_list | sort }}
+
+    - name: Pause for effect and explanation
+      pause:
+        prompt: "Discuss output and then hit Enter"
+
+    - name: Output values of demo_list sorted and unique
+      debug:
+        msg: The value of demo_list sorted and without duplicates is {{ demo_list | sort | unique }}
+
+    - name: Pause for effect and explanation
+      pause:
+        prompt: "Discuss output and then hit Enter"

@@ -1,0 +1,50 @@
+---
+# tasks file for webapp
+
+- name: Create a temporary repository dir on the controller
+  tempfile:
+    prefix: gitrepo_
+    state: directory
+  delegate_to: localhost
+  run_once: yes
+  register: temp_dir
+  become: no
+
+- name: Set webapp facts
+  set_fact:
+    webapp_tmp_dir: "{{ temp_dir['path'] }}"
+
+
+- name: Clone webapp to the controller
+  git:
+    repo: "{{ webapp_repo }}"
+    version: "{{ webapp_version }}"
+    dest: "{{ webapp_tmp_dir }}"
+    accept_hostkey: yes
+  delegate_to: localhost
+  run_once: yes
+  become: no
+
+- name: Set webapp file whitelist fact
+  set_fact:
+    webapp_whitelist: "{{ query('fileglob', webapp_tmp_dir + '/*') | map('relpath', webapp_tmp_dir) | list }}"
+
+- name: Get list of remote files in the content directory
+  find:
+    paths: "{{ webapp_content_dir }}"
+  register: remote_files
+
+- name: Remove extraneous remote files
+  file:
+    path: "{{ webapp_content_dir }}/{{ item }}"
+    state: absent
+  loop: "{{ webapp_all_files | difference(webapp_whitelist) }}"
+  vars:
+    webapp_all_files: "{{ remote_files['files'] | map(attribute='path') | map('relpath', webapp_content_dir) | list }}"
+
+- name: Copy webapp content
+  template:
+    src: "{{ webapp_tmp_dir}}/{{ item }}"
+    dest: "{{ webapp_content_dir }}/{{ item }}"
+  loop: "{{ webapp_whitelist }}"
+
