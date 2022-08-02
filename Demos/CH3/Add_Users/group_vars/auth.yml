@@ -1,0 +1,6 @@
+---
+controller_auth:
+  username: admin
+  password: redhat
+  host: controller.lab.example.com
+  username_password: "admin:redhat"

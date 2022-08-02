@@ -1,0 +1,7 @@
+= References for Collections and Modules Used
+
+.*awx.awx.job_template* - Used to Create a Job Template
+https://docs.ansible.com/ansible/latest/collections/awx/awx/job_template_module.html
+
+.*awx.awx.credential* - Used to Create Credentials for Tower
+https://docs.ansible.com/ansible/latest/collections/awx/awx/credential_module.html#ansible-collections-awx-awx-credential-module

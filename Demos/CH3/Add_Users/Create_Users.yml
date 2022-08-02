@@ -1,0 +1,20 @@
+---
+- name: Create Users Using Ansible Controller Colleciton
+  hosts: localhost
+  vars_files:
+    - tower_users.yml
+
+  tasks:
+
+    - name: Create Users
+      ansible.controller.tower_user:
+        username: "{{ item.username }}"
+        password: "{{ item.password }}"
+        email: "{{ item.email }}"
+        first_name: "{{ item.first_name }}"
+        last_name: "{{ item.last_name }}"
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        state: present
+      loop: "{{ users }}"

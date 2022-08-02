@@ -1,0 +1,12 @@
+
+## Simple Command to Install Collections
+
+ansible-galaxy collection install -r collections/requirements.yml -p collections/
+
+## Run playbook
+
+ansible-playbook Setup_Controller.yml
+ansible-playbook Setup_Jobs.yml
+ansible-playbook Setup_Inventory.yml
+
+*** Remember to Sync the Inventory

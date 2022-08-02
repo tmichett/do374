@@ -1,0 +1,13 @@
+---
+### Playbook to setup all exercises for Ansible Controller
+### This playbook should be run after the creation of the projects section.
+### Must run "Setup_All.yml" playbook to setup Ansible Controller for the Job Workflow Templates Demo
+
+- name: Setup Controller with SCM Credentials
+  import_playbook: Setup_Controller.yml
+
+- name: Setup Controller with Dynamic Inventory
+  import_playbook: Setup_Inventory.yml
+
+- name: Setup Controller with Jobs to be used in a Job Workflow Template
+  import_playbook: Setup_Jobs.yml

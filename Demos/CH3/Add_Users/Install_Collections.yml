@@ -1,0 +1,14 @@
+---
+- name: Copying of AAP2 Collections
+  hosts: localhost
+
+
+  tasks:
+
+    - name: Copy Ansible Posix Collection
+      copy:
+        src: ./collections/ansible-controller-4.1.1.tar.gz
+        dest: /tmp/ansible-controller-4.1.1.tar.gz
+
+    - name: Install Ansible Posix Collection
+      shell: ansible-galaxy collection install /tmp/ansible-controller-4.1.1.tar.gz

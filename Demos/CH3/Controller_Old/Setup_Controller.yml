@@ -1,0 +1,17 @@
+---
+- name: Playbook to Configure Controller with SCM Credentials
+  hosts: localhost
+  tasks:
+
+    - name: Create a valid SCM credential for Travis's Github
+      awx.awx.credential:
+        name: Travis Github SCM Credential
+        organization: Default
+        state: present
+        credential_type: Source Control
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        inputs:
+          username: tmichett
+          ssh_key_data: "{{ lookup('file', '/tmp/github_id') }}"

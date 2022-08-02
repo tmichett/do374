@@ -1,0 +1,13 @@
+---
+users:
+  - first_name: Travis
+    last_name: Michette
+    username: travis
+    email:  travis@redhat.com
+    password: redhat123
+
+  - first_name: Sivart
+    last_name: Ettehcim
+    username: sivart
+    email:  sivart@redhat.com
+    password: redhat123
