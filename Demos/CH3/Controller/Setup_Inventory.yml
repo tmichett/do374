@@ -4,7 +4,7 @@
   tasks:
 
     - name: Create DO374 Inventory
-      awx.awx.inventory:
+      ansible.controller.inventory:
         name: "DO374 Web Workflow"
         organization: "DO374_Demo"
         state: "present"
@@ -14,13 +14,13 @@
 
 
     - name: Create DO374 Project Inventory -  Source
-      awx.awx.inventory_source:
+      ansible.controller.inventory_source:
         name: "DO374 Project Inventory"
         organization: "DO374_Demo"
         inventory: "DO374 Web Workflow"
-        source_project: "DO374"
+        source_project: "DO374_Demo_Project"
         source: scm
-        source_path: "Demos/CH3/inventory"
+        source_path: "Demos/CH3/Controller/inventory"
         state: "present"
         controller_username: admin
         controller_password: redhat
