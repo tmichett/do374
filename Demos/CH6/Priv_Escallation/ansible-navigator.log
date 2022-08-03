@@ -1,0 +1,2 @@
+220803152606.091 ERROR 'ansible_navigator.actions.run_8d08.run' Can not step back while playbook in progress, :q! to exit
+220803152606.864 WARNING 'ansible_navigator.actions.run_8d08._prepare_to_quit' Quit requested but playbook running, try q! or quit!

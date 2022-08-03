@@ -7,5 +7,7 @@ ansible-navigator:
     image: ee-supported-rhel8:2.0
     pull-policy: missing
 
+  mode: stdout
+
   playbook-artifact:
     enable: false
