@@ -1,0 +1,24 @@
+---
+- name: Playbook to Show Users
+  hosts: all
+  tasks:
+    - name: Show user for the play with Become=True
+      shell: |
+        whoami
+      become: true
+      register: username
+
+    - name: Display User with play Become=True
+      debug:
+        msg: My user for Become=True is {{ username.stdout }}
+
+    - name: Show user for the play with Become=False
+      shell: |
+        whoami
+      become: false
+      register: username
+
+    - name: Display User with play Become=False
+      debug:
+        msg: My user for Become=False is {{ username.stdout }}
+
