@@ -1,0 +1,7 @@
+---
+# tasks file for deploy_packages
+- name: Deploy Package(s) to Servers
+  yum:
+    name: "{{ pkg_name }}"
+    state: "{{ pkg_state }}"
+  when: pkg_name is defined

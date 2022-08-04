@@ -1,0 +1,9 @@
+---
+# tasks file for deploy_packages
+- name: Deploy Package(s) to Servers
+  service:
+    name: "{{ item.svc_name }}"
+    state: "{{ item.svc_state }}"
+    enabled: "{{ item.svc_enabled }}"
+  when: item.svc_name is defined
+  loop: "{{ svc }}"

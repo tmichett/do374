@@ -1,0 +1,3 @@
+---
+# defaults file for deploy_packages
+pkg_state: latest

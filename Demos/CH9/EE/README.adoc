@@ -1,0 +1,30 @@
+:pygments-style: tango
+:source-highlighter: pygments
+:toc:
+:toclevels: 7
+:sectnums:
+:sectnumlevels: 6
+:numbered:
+:chapter-label:
+:icons: font
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images/
+
+
+= Preparing the Demo
+
+[source,bash]
+----
+✔ ~/Gitlab/do374/Demos/CH9 [master|⚑ 1]
+19:04 $ sudo yum install ansible-builder
+----
+
