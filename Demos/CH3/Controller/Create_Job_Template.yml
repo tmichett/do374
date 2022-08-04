@@ -1,0 +1,22 @@
+---
+- name: Create Job Template
+  hosts: localhost
+
+  tasks:
+
+    - name: Create Job Template
+      ansible.controller.job_template:
+        name: "DO374 Job Template"
+        description: "Demo Job from Project"
+        state: present
+        organization: DO374_Demo
+        project: DO374_Demo_Project
+        inventory: DO374 Web Workflow
+        job_type: run
+        playbook: "Demos/CH2/My_Collection/site2.yml"
+        credential: DO374 Machine Credentials
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        validate_certs: false
+        state: present

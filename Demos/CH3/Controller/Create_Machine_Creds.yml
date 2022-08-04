@@ -13,7 +13,7 @@
         credential_type: Machine
         inputs:
           username: root
-          password: root
+          password: redhat
         controller_username: admin
         controller_password: redhat
         controller_host: https://controller.lab.example.com
