@@ -6,13 +6,14 @@
 
     - name: Create SCM Credential
       ansible.controller.credential:
-        name: "Travis GH PAT Credential"
-        description: "Travis Github Token"
+        name: "Travis GH SCM PAT Credential"
+        description: "Travis Github with Personal Token"
         state: present
         organization: DO374_Demo
-        credential_type: GitHub Personal Access Token
+        credential_type: Source Control
         inputs:
-          token: "{{ Github_PAT }}"
+          username: tmichett
+          password: "{{ Github_PAT }}"
         controller_username: admin
         controller_password: redhat
         controller_host: https://controller.lab.example.com
