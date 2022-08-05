@@ -23,6 +23,7 @@
         source_project: "DO374_Demo_Project"
         source: scm
         source_path: "Demos/CH3/Controller/inventory"
+        update_on_launch: True
         state: "present"
         controller_username: admin
         controller_password: redhat
