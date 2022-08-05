@@ -19,9 +19,6 @@
       - svc_name: httpd
         svc_state: started
         svc_enabled: yes
-  collections:
-    - name: tmichett.gls_collection_demo
-
   tasks:
     - name: Include Deploy Package Role
       include_role: 
