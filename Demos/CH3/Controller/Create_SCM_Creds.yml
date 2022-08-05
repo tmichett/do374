@@ -1,7 +1,7 @@
 ---
 - name: Create Credentials
   hosts: localhost
-
+  vars_files: vars.yml
   tasks:
 
     - name: Create SCM Credential
@@ -10,11 +10,11 @@
         description: "Travis Github Token"
         state: present
         organization: DO374_Demo
-        credential_type: GitLab Personal Access Token
+        credential_type: GitHub Personal Access Token
         inputs:
-          token: test
+          token: "{{ Github_PAT }}"
         controller_username: admin
         controller_password: redhat
         controller_host: https://controller.lab.example.com
         validate_certs: false
-        state: present
+ 

@@ -8,7 +8,6 @@
       ansible.controller.credential:
         name: "DO374 Machine Credentials"
         description: "SSH Username and Password"
-        state: present
         organization: DO374_Demo
         credential_type: Machine
         inputs:

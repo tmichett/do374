@@ -11,6 +11,8 @@
         controller_username: admin
         controller_password: redhat
         controller_host: https://controller.lab.example.com
+        validate_certs: false
+
 
 
     - name: Create DO374 Project Inventory -  Source

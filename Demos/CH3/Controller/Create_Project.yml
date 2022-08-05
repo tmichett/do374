@@ -14,7 +14,6 @@
         scm_type: git
         scm_branch: main
         # credential: Travis GH PAT Credential
-        state: present
         controller_username: admin
         controller_password: redhat
         controller_host: https://controller.lab.example.com

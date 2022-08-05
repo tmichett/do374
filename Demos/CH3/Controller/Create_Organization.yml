@@ -8,7 +8,6 @@
       ansible.controller.organization:
         name: "DO374_Demo"
         description: "DO374 Demo Organization"
-        state: present
         controller_username: admin
         controller_password: redhat
         controller_host: https://controller.lab.example.com
