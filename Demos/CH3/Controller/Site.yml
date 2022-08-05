@@ -1,0 +1,12 @@
+---
+### Create Ansible Controller Demo
+  hosts: localhost
+  gather_facts: no
+- import_playbook: Create_Organization.yml
+- import_playbook: Create_Machine_Creds.yml
+- import_playbook: Create_SCM_Creds.yml
+- import_playbook: Create_Project.yml
+- import_playbook: Setup_Inventory.yml
+- import_playbook: Create_Job_Template.yml
+
+
