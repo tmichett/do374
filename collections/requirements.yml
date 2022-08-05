@@ -1,0 +1,3 @@
+collections:
+- name: tmichett.gls_collection_demo
+  source: https://galaxy.ansible.com
