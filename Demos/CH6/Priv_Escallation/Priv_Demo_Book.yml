@@ -4,7 +4,7 @@
   become: true
 
   tasks:
-    - name: show ansible_user_id
+    - name: show ansible_user_id with BECOME=true
       debug:
         var: ansible_user_id
 
@@ -13,6 +13,6 @@
   become: false
 
   tasks:
-    - name: show ansible_user_id
+    - name: show ansible_user_id with BECOME=false
       debug:
         var: ansible_user_id
