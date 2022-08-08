@@ -1,0 +1,18 @@
+---
+- name: Playbook to Show Users
+  hosts: all
+  become: true
+
+  tasks:
+    - name: show ansible_user_id
+      debug:
+        var: ansible_user_id
+
+- name: Test ansible_user_id
+  hosts: all
+  become: false
+
+  tasks:
+    - name: show ansible_user_id
+      debug:
+        var: ansible_user_id
