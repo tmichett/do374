@@ -38,7 +38,15 @@
 * *Using collections*
 ** https://docs.ansible.com/ansible/latest/user_guide/collections_using.html
 
+* *Ansible Posix Collection*
+** https://galaxy.ansible.com/ansible/posix 
+
+
+
 == Ansible Automation Platform (AAP 2)
+
+* *6 steps to install Ansible Automation Platform 2.3 on RHEL*
+** https://developers.redhat.com/articles/2023/03/07/install-ansible-23-on-rhel-91?sc_cid=7013a0000034ro3AAA#
 
 * *Introducing Ansible Automation Platform 2*
 ** https://www.ansible.com/blog/introducing-ansible-automation-platform-2
@@ -49,11 +57,40 @@
 * *Introducing Red Hat Ansible Automation Platform 2.1*
 ** https://www.ansible.com/blog/introducing-red-hat-ansible-automation-platform-2.1
 
+* *When localhost isn't what it seems in Red Hat Ansible Automation Platform 2*
+** https://www.ansible.com/blog/when-localhost-isnt-what-it-seems-in-red-hat-ansible-automation-platform-2 
+
+
 == Execution Environments
 
 * *Automating execution environment image builds with GitHub Actions*
 ** https://www.ansible.com/blog/automating-execution-environment-image-builds-with-github-actions
 
+
+== Callback Plugins
+
+* *Callback Plugins*
+** https://docs.ansible.com/ansible/latest/plugins/callback.html
+
+* *ansible.posix.timer callback – Adds time to play stats*
+** https://docs.ansible.com/ansible/latest/collections/ansible/posix/timer_callback.html#ansible-collections-ansible-posix-timer-callback-requirements
+
+* *ansible.posix.profile_tasks callback – adds time information to tasks*
+** https://docs.ansible.com/ansible/latest/collections/ansible/posix/profile_tasks_callback.html
+
+* *ansible.posix.cgroup_perf_recap callback – Profiles system activity of tasks and full execution using cgroups*
+** https://docs.ansible.com/ansible/latest/collections/ansible/posix/cgroup_perf_recap_callback.html#ansible-collections-ansible-posix-cgroup-perf-recap-callback-requirements
+
+* *Assess resource consumption with Ansible callback plugins*
+** https://www.redhat.com/sysadmin/ansible-callback-plugins-metrics
+
+* *ansible.posix.cgroup_perf_recap callback – Profiles system activity of tasks and full execution using cgroups*
+** https://docs.ansible.com/ansible/latest/collections/ansible/posix/cgroup_perf_recap_callback.html
+
+== Ansible Facts and Variables
+
+* *Discovering variables: facts and magic variables*
+** https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#ansible-facts 
 
 == Ansible Galaxy
 
@@ -66,7 +103,7 @@
 ** https://github.com/ansible/ansible-navigator
 
 * *Ansible Navigator Settings*
-** https://ansible-navigator.readthedocs.io/en/latest/settings/
+** https://ansible-navigator.readthedocs.io/settings/
 
 * *Ansible Navigator Cheat Sheet*
 ** https://www.techbeatly.com/ansible-navigator-cheat-sheet/
@@ -159,3 +196,12 @@ The Jenkins jobs use *pre-commit* rules to check items before running. Failure t
 
 * *How to install Python 3 on Red Hat Enterprise Linux*
 ** https://developers.redhat.com/blog/2018/08/13/install-python3-rhel?source=sso#tl_dr
+
+
+== VSCode Resources
+
+* *Ansible VS Code Extension by Red Hat*
+** https://marketplace.visualstudio.com/items?itemName=redhat.ansible
+
+* *Ansible Core and Red Hat Collection Snippets* 
+** https://marketplace.visualstudio.com/items?itemName=TravisMichette.tm-ansible-snippets
