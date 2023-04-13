@@ -205,3 +205,8 @@ The Jenkins jobs use *pre-commit* rules to check items before running. Failure t
 
 * *Ansible Core and Red Hat Collection Snippets* 
 ** https://marketplace.visualstudio.com/items?itemName=TravisMichette.tm-ansible-snippets
+
+== DISA STIG 
+
+* *DISA releases the first Ansible STIG*
+** https://www.redhat.com/en/blog/disa-releases-first-ansible-stig 
