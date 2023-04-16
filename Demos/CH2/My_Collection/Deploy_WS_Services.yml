@@ -2,7 +2,7 @@
 - name: Playbook to Fully Setup and Configure a Webserver
   hosts: servera
   become: true
-  vars: 
+  vars:
     pkg_name:
       - vim
       - tree
@@ -21,7 +21,7 @@
         svc_enabled: yes
   tasks:
     - name: Include Deploy Package Role
-      include_role: 
+      include_role:
         name: tmichett.gls_collection_demo.deploy_packages
     - name: Include Manage Service Role
       include_role:
