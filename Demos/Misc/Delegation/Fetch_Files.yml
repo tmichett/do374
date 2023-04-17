@@ -7,4 +7,9 @@
         src: /etc/hostname
         dest: /tmp/{{ inventory_hostname }}_etc_hostname
         flat: yes
+
+    - name: Copy Files to Host
+      copy:
+        src: /tmp/{{ inventory_hostname }}_etc_hostname
+        dest: /tmp
       delegate_to: workstation
