@@ -4,8 +4,10 @@ ansible-navigator:
     config: ./ansible.cfg
 
   execution-environment:
-    image: ee-supported-rhel8:2.0
+    image: ee-supported-rhel8:latest
     pull-policy: missing
 
   playbook-artifact:
     enable: false
+
+  mode: stdout
