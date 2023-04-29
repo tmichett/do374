@@ -11,4 +11,6 @@ ansible-navigator:
     enable: false
 
   mode: stdout
+  logging:
+    file: /dev/null
 ...
