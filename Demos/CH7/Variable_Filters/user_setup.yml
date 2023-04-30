@@ -8,3 +8,4 @@
       user:
         name: "{{ username }}"
         password: "{{  password |  password_hash('sha512') }}"
+        comment: "{{ username | capitalize }}"
