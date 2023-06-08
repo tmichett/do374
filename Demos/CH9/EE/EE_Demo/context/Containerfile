@@ -1,5 +1,5 @@
-ARG EE_BASE_IMAGE=utility.lab.example.com/ee-supported-rhel8:latest
-ARG EE_BUILDER_IMAGE=utility.lab.example.com/ansible-builder-rhel8:latest
+ARG EE_BASE_IMAGE=hub.lab.example.com/ee-supported-rhel8:latest
+ARG EE_BUILDER_IMAGE=hub.lab.example.com/ansible-builder-rhel8:latest
 
 FROM $EE_BASE_IMAGE as galaxy
 ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS=
