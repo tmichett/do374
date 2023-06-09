@@ -1,0 +1,3 @@
+firewall_rules:
+  # Allow 80/tcp connections
+  - port: 80/tcp
