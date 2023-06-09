@@ -1,0 +1,17 @@
+= Performing Demos
+
+
+== Execution Speed 
+
+Demos/CH6/Optimizing_Execution_Speed/task-speed
+
+.Cgroups and Profiling
+
+The *create_cgroup.txt* command allows the creation of a CGROUP and running of the playbook for profiling. Currently we are using the *ansible-playbook* command to profile and run CGROUPS. This means all collections and components need to be installed on the controller node to run.
+
+Playbook names help describe what is happening.
+
+== Privilege Demos
+
+
+Demos/CH6/Priv_Escallation
