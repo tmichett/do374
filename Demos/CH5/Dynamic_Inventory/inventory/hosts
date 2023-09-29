@@ -1,9 +1,18 @@
+serverc username=nick
+
+[workstations]
+workstation.lab.example.com
+
+[dbservers]
+serverb
 
 [webservers]
 servera
+serverc
 
 [servers:children]
 webservers
+dbservers
 
 [webservers:vars]
 username=travis

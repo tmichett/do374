@@ -18,7 +18,7 @@
         - php-mysqlnd
 
     - name: Ensure the services are enabled
-      service:
+      systemd:
         name: "{{ item }}"
         state: started
         enabled: True

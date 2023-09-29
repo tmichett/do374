@@ -1,12 +1,15 @@
 ---
 ansible-navigator:
   ansible:
-    config:
-      path: ./ansible.cfg
+    config: ./ansible.cfg
+
   execution-environment:
     image: ee-supported-rhel8:latest
-    pull:
-      policy: missing
-  mode: stdout
+    pull-policy: missing
+
   playbook-artifact:
     enable: false
+
+  mode: stdout
+...
+

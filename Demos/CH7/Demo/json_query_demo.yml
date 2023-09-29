@@ -15,4 +15,4 @@
     - name: Get the 'name' elements from the list of dictionaries in 'hosts'
       assert:
         that:
-          - "{{ hosts | json_query('[*].name') }} is eq( ['bastion','classroom'] )"
+          - "{{ hosts | json_query('[*].name') | sort }} is eq( ['bastion', 'classroom'] )"

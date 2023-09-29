@@ -1,6 +1,6 @@
 - name: Systems identified as Webservers and their variables
   hosts: web_servers
-  gather_facts: no
+  #  gather_facts: no
 
   tasks:
     - name: Print out Variable Information for Webserver Group

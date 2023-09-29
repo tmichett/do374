@@ -5,6 +5,6 @@ lb_servers:
 
 web_servers:
   hosts:
-    server[b:c].lab.example.com:
+    server[b:c].lab.example.com
 
 
