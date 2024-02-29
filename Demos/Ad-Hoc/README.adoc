@@ -1,0 +1,53 @@
+
+.Ad-Hoc Using Navigator (Testing Config for SSH w/ Creds)
+[source,bash]
+----
+[student@workstation Ad-Hoc]$ ansible-navigator exec -- ansible all -m ansible.builtin.ping -k
+----
+
+.Ad-Hoc Using Navigator (Testing Config for SSH w/o Creds)
+[source,bash]
+----
+[student@workstation Ad-Hoc]$ ansible-navigator exec -- ansible all -m ansible.builtin.ping
+----
+
+.Ad-Hoc Using Navigator (Testing Config for SSH & Sudoers w/ Creds)
+[source,bash]
+----
+[student@workstation Ad-Hoc]$ ansible-navigator exec -- ansible all -m ansible.builtin.ping -k -K
+----
+
+.Ad-Hoc Using Navigator (Testing Config for Sudoers w/o Creds)
+[source,bash]
+----
+[student@workstation Ad-Hoc]$ ansible-navigator exec -- ansible all -m ansible.builtin.ping
+----
+
+.Determining the User (regular)
+[source,bash]
+----
+[student@workstation Ad-Hoc]$ ansible-navigator exec -- ansible all -m shell -a "whoami"
+----
+
+.Determining the User (privileged - become user)
+[source,bash]
+----
+[student@workstation Ad-Hoc]$ ansible-navigator exec -- ansible all -m shell -a "whoami" --become
+----
+
+.Container Demo using Podman
+[source,bash]
+----
+podman run --rm -it hub.lab.example.com/ee-supported-rhel8:latest whoami
+----
+
+.Container Demo using Ansible Navigator
+[source,bash]
+----
+ansible-navigator exec -- whoami
+----
+
+[NOTE]
+=====
+RHLC Post: https://learn.redhat.com/t5/Automation-Management-Ansible/AAP2-and-Ansible-Navigator-Execution-Environments/m-p/38452#M1076
+=====
