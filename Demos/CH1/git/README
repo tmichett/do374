@@ -1,0 +1,10 @@
+git config http.sslVerify false  - Turns off SSL verify in an already cloned repository
+
+GIT_SSL_NO_VERIFY=true git clone https://gitlab.michettetech.com/travis/do374.git  (Clones repository with Self-Signed Cert)
+
+git config --global credential.helper store (Globally saves and stores credentials)
+
+Configure User
+
+    git config --global user.name "Travis Michette"
+    git config --global user.email tmichett@redhat.com
