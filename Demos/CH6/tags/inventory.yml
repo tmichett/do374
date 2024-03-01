@@ -1,0 +1,21 @@
+lb_servers:
+  hosts:
+    servera.lab.example.com:
+
+web_servers:
+  children:
+    a_web_servers:
+    b_web_servers:
+
+
+# Group "A" of Web Servers
+a_web_servers:
+  hosts:
+    serverb.lab.example.com:
+
+
+# Group "B" of Web Servers
+b_web_servers:
+  hosts:
+    serverc.lab.example.com:
+

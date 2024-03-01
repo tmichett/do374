@@ -1,0 +1,8 @@
+sudo yum install libcgroup-tools
+
+sudo cgcreate -a devops:devops -t devops:devops -g cpuacct,memory,pids:ansible_profile
+sudo cgcreate -a student:student -t student:student -g cpuacct,memory,pids:ansible_profile
+
+cgexec -g cpuacct,memory,pids:ansible_profile ansible-playbook deploy_webservers_optimized.yml
+
+

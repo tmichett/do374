@@ -1,0 +1,25 @@
+---
+- name: Demo for Tags
+  hosts: web_servers
+
+  tasks:
+
+    - name: Demo of Always Tag 
+      debug:
+        msg: This tast ran for the always tag.
+      tags: always, demo
+
+    - name: Demo of Never Tag
+      debug:
+        msg: This tast ran for the never tag.
+      tags: never, demo3
+
+    - name: Demo of Demo1 Tag
+      debug:
+        msg: This tast ran for the Demo1 tag.
+      tags: demo1, demo
+
+    - name: Demo of Demo2 Tag
+      debug:
+        msg: This tast ran for the Demo2 tag.
+      tags: demo2, demo
