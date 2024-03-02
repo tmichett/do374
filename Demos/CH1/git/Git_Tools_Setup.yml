@@ -32,6 +32,7 @@
     - name: Install Github CLI
       yum:
         name: gh
+        disable_gpg_check: true
       become: true
 
 ## Clone Repositories
