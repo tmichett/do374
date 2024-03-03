@@ -1,6 +1,6 @@
 ---
 - name: Upload Container Images
-  hosts: localhost
+  hosts: workstation
   vars_files:
     - vars/registry_login.yml
   collections:
@@ -26,13 +26,22 @@
       containers.podman.podman_tag:
         image: quay.io/tmichett/travis_do374:1.1
         target_names:
-          - "hub.lab.example.com/ansible-automation-platform-22/travis_do374:1.1"
+          - "hub.lab.example.com/travis_do374:1.1"
 
     - name: Push Container Images
       containers.podman.podman_image:
-        name: "hub.lab.example.com/ansible-automation-platform-22/travis_do374:1.1"
+        name: "hub.lab.example.com/travis_do374:1.1"
         push: yes
         username: "{{ registry_un }}"
         password: "{{ registry_pass }}"
         push_args:
-          dest: "hub.lab.example.com/ansible-automation-platform-22/travis_do374:1.1"
+          dest: "hub.lab.example.com/travis_do374:1.1"
+
+    - name: Add EE to the controller instance
+      ansible.controller.execution_environment:
+        name: "Travis Custom DO374 EE"
+        image: hub.lab.example.com/travis_do374:1.1
+        controller_username: admin
+        controller_password: redhat
+        controller_host: https://controller.lab.example.com
+        validate_certs: false

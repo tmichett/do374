@@ -138,6 +138,11 @@ https://github.com/ansible/ansible-navigator/issues/611
 * *Introduction to Ansible Builder*
 ** https://www.ansible.com/blog/introduction-to-ansible-builder
 
+* *How to create execution environments using ansible-builder*
+** https://developers.redhat.com/articles/2023/05/08/how-create-execution-environments-using-ansible-builder#continue_your_automation_journey_with_ansible_automation_platform
+
+* *How to build Ansible execution environment images for unconnected environments*
+** https://www.redhat.com/sysadmin/ansible-execution-environment-unconnected
 === Github
 
 
