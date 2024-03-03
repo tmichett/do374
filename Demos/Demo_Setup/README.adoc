@@ -1,0 +1,33 @@
+= Demo Running Instructions
+
+.Ensuring EE Tar Files Exist
+[source,bash]
+----
+lab start install-configuration
+----
+
+.Install Podman Collecitons
+[source,bash]
+----
+[student@workstation Add_EEs]$ ansible-galaxy collection install -r collections/requirements.yml -p collections/
+----
+
+
+.Run the Ansible Playbook
+[source,bash]
+----
+[student@workstation Add_EEs]$ ansible-playbook Load_EE_Demo.yml
+----
+
+
+.References
+[NOTE]
+======
+
+* *Podman container Ansible modules*: https://galaxy.ansible.com/containers/podman?extIdCarryOver=true&sc_cid=701f2000001OH7YAAW
+* *Podman Collection:* https://github.com/containers/ansible-podman-collections
+** https://docs.ansible.com/ansible/latest/collections/containers/podman/podman_tag_module.html
+** https://docs.ansible.com/ansible/latest/collections/containers/podman/podman_load_module.html
+** https://docs.ansible.com/ansible/latest/collections/containers/podman/podman_image_module.html
+
+======

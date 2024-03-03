@@ -1,0 +1,38 @@
+---
+- name: Upload Container Images
+  hosts: localhost
+  vars_files:
+    - vars/registry_login.yml
+  collections:
+    - containers.podman
+
+### Tasks for this playbook will download and load container images
+
+
+  tasks:
+## Podman Collections Needed for Login
+    - name: Login to Container Registry (Lab Environment)
+      containers.podman.podman_login:
+        username: "{{ registry_un }}"
+        password: "{{ registry_pass }}"
+        registry: "{{ registry_url }}"
+
+    - name: Pull Container Images
+      containers.podman.podman_image:
+        name: quay.io/tmichett/travis_do374:1.1
+
+
+    - name: Tag Image
+      containers.podman.podman_tag:
+        image: quay.io/tmichett/travis_do374:1.1
+        target_names:
+          - "hub.lab.example.com/ansible-automation-platform-22/travis_do374:1.1"
+
+    - name: Push Container Images
+      containers.podman.podman_image:
+        name: "hub.lab.example.com/ansible-automation-platform-22/travis_do374:1.1"
+        push: yes
+        username: "{{ registry_un }}"
+        password: "{{ registry_pass }}"
+        push_args:
+          dest: "hub.lab.example.com/ansible-automation-platform-22/travis_do374:1.1"

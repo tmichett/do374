@@ -1,0 +1,3 @@
+registry_un: admin
+registry_pass: redhat
+registry_url: hub.lab.example.com
