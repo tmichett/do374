@@ -1,0 +1,21 @@
+---
+- name: Demonstrate Variables and Filters to Process Variables
+  hosts: localhost
+  gather_facts: no
+  vars:
+    hosts:
+      - name: bastion
+        ip:
+          - 172.25.250.254
+          - 172.25.252.1
+      - name: classroom
+        ip:
+          - 172.25.252.254
+      - name: nada
+        ip:
+          - 172.25.252.250        
+  tasks:
+    - name: Get the 'name' elements from the list of dictionaries in 'hosts'
+      assert:
+        that:
+          - "{{ hosts | json_query('[*].name') | sort }} is eq( ['bastion', 'classroom'] )"
