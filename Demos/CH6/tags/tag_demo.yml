@@ -1,7 +1,7 @@
 ---
 - name: Demo for Tags
   hosts: web_servers
-
+  gather_facts: false
   tasks:
 
     - name: Demo of Always Tag 

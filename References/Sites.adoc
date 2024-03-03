@@ -1,7 +1,7 @@
-= References
+== References
 
 
-== Ansible Roles, Collections, and Content
+=== Ansible Roles, Collections, and Content
 
 * *Ansible Collections Overview*
 ** https://github.com/ansible-collections/overview/blob/main/README.rst
@@ -30,6 +30,11 @@
 * *Ansible Netcommon*
 ** https://github.com/ansible-collections/ansible.netcommon/blob/main/meta/runtime.yml
 
+* *Ansible Collections on Galaxy*
+** https://galaxy.ansible.com/ui/namespaces/ansible/
+** https://galaxy.ansible.com/ui/namespaces/community
+** https://galaxy.ansible.com/ui/namespaces/tmichett
+** https://galaxy.ansible.com/ui/namespaces/redhat_cop
 
 * *Creating collections*
 ** https://docs.ansible.com/ansible/devel/dev_guide/developing_collections_creating.html#creating-collections-skeleton
@@ -43,7 +48,7 @@
 
 
 
-== Ansible Automation Platform (AAP 2)
+=== Ansible Automation Platform (AAP 2)
 
 * *6 steps to install Ansible Automation Platform 2.3 on RHEL*
 ** https://developers.redhat.com/articles/2023/03/07/install-ansible-23-on-rhel-91?sc_cid=7013a0000034ro3AAA#
@@ -61,13 +66,13 @@
 ** https://www.ansible.com/blog/when-localhost-isnt-what-it-seems-in-red-hat-ansible-automation-platform-2 
 
 
-== Execution Environments
+=== Execution Environments
 
 * *Automating execution environment image builds with GitHub Actions*
 ** https://www.ansible.com/blog/automating-execution-environment-image-builds-with-github-actions
 
 
-== Callback Plugins
+=== Callback Plugins
 
 * *Callback Plugins*
 ** https://docs.ansible.com/ansible/latest/plugins/callback.html
@@ -87,17 +92,17 @@
 * *ansible.posix.cgroup_perf_recap callback – Profiles system activity of tasks and full execution using cgroups*
 ** https://docs.ansible.com/ansible/latest/collections/ansible/posix/cgroup_perf_recap_callback.html
 
-== Ansible Facts and Variables
+=== Ansible Facts and Variables
 
 * *Discovering variables: facts and magic variables*
 ** https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_vars_facts.html#ansible-facts 
 
-== Ansible Galaxy
+=== Ansible Galaxy
 
 * *Galaxy User Guide - Configuring Ansible Galaxy Client*
 ** https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#configuring-the-ansible-galaxy-client
 
-== Ansible Navigator
+=== Ansible Navigator
 
 * *Github Navigator Project*
 ** https://github.com/ansible/ansible-navigator
@@ -123,17 +128,17 @@ ansible-navigator settings --sample
 https://github.com/ansible/ansible-navigator/issues/611
 ======
 
-== Ansible Automation Hub
+=== Ansible Automation Hub
 
 * *To Install & configure the Ansible Ansible Automation Hub*
 ** https://www.jazakallah.info/post/to-install-configure-the-ansible-ansible-automation-hub
 
-== Ansible Builder
+=== Ansible Builder
 
 * *Introduction to Ansible Builder*
 ** https://www.ansible.com/blog/introduction-to-ansible-builder
 
-== Github
+=== Github
 
 
 *Git Logline*: git config --global alias.logline "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -159,13 +164,13 @@ Alternatively, populate the GH_TOKEN environment variable with a GitHub API auth
 * Turning off SSL Verification for Self-Signed/Self-Hosted Instances: *git config --global http.sslverify false*
 
 
-== Pre-Commit
+=== Pre-Commit
 
 The Jenkins jobs use *pre-commit* rules to check items before running. Failure to pass these checks will result in Jenkins build failures. Instructions for using *pre-commit* are in the text, but it might be recommended and easier to enable *pre-commit* automatically.
 
 *automatically enabling pre-commit on repositories*: https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories
 
-== Ansible Real-World Examples and Articles
+=== Ansible Real-World Examples and Articles
 
 * *awx_pod - Github Project Ansible AWX in Containers*
 ** https://github.com/ikke-t/awx_pod
@@ -188,17 +193,17 @@ The Jenkins jobs use *pre-commit* rules to check items before running. Failure t
 * *Streamlining AWS Deployments with Python & Ansible Part III*
 ** https://www.capitalone.com/tech/cloud/python-ansible-aws-refactoring-code/
 
-== Other Ansbile Examples and Repositories (from other Instructors)
+=== Other Ansbile Examples and Repositories (from other Instructors)
 
 * https://eenfach.de/gitblit/tree/rht!rh294.git
 
-== Python
+=== Python
 
 * *How to install Python 3 on Red Hat Enterprise Linux*
 ** https://developers.redhat.com/blog/2018/08/13/install-python3-rhel?source=sso#tl_dr
 
 
-== VSCode Resources
+=== VSCode Resources
 
 * *Ansible VS Code Extension by Red Hat*
 ** https://marketplace.visualstudio.com/items?itemName=redhat.ansible
@@ -206,7 +211,7 @@ The Jenkins jobs use *pre-commit* rules to check items before running. Failure t
 * *Ansible Core and Red Hat Collection Snippets* 
 ** https://marketplace.visualstudio.com/items?itemName=TravisMichette.tm-ansible-snippets
 
-== DISA STIG 
+=== DISA STIG 
 
 * *DISA releases the first Ansible STIG*
 ** https://www.redhat.com/en/blog/disa-releases-first-ansible-stig 
