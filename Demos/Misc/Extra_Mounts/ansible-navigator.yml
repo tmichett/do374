@@ -9,8 +9,8 @@ ansible-navigator:
       policy: missing
     
     volume-mounts:
-      - dest: /tmp
+      - dest: /demomount
         options: Z
-        src: ./
+        src: /demomount
   playbook-artifact:
     enable: false

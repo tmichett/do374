@@ -5,5 +5,5 @@
     - name: Fetch file from system
       fetch:
         src: /etc/hostname
-        dest: ./{{ inventory_hostname }}_etc_hostname
+        dest: /demomount/{{ inventory_hostname }}_etc_hostname
         flat: yes
