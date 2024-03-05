@@ -18,3 +18,5 @@ a_web_servers:
 b_web_servers:
   hosts:
     serverc.lab.example.com:
+  vars:
+    ansible_user: student
