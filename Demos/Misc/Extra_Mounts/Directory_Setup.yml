@@ -1,0 +1,11 @@
+---
+- name: Playbook to Fully Setup Additional Mount Demo
+  hosts: workstation
+  become: true
+  tasks:
+    - name: Create Demo Directory
+      ansible.builtin.file:
+        path: /demomount
+        state: directory
+        owner: student
+        group: student
