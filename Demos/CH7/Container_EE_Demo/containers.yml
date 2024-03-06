@@ -6,7 +6,7 @@
   tasks:
     - name: Retrieve Container Images
       containers.podman.podman_image_info:
-        name: ee-supported-rhel8:2.0
+        name: ee-supported-rhel8:latest
       register: container_info
 
       
