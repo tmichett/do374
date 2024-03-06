@@ -1,7 +1,7 @@
   ### Play to get system ready for creating Classroom Environments
   ### Designed to be run from localhost
 - name: Setup System for Github with Tools
-  hosts: localhost
+  hosts: workstation
   vars:
     linux_username: student
     install_packages:
