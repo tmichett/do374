@@ -1,0 +1,18 @@
+---
+- name: Delegation Example
+  hosts: servera.lab.example.com
+  become: false
+  tasks:
+    - name: Get system information
+      ansible.builtin.command: hostnamectl
+      register: managed_host
+    - name: Display demo system information
+      ansible.builtin.debug:
+        var: managed_host
+    - name: Get system information
+      ansible.builtin.command: hostnamectl
+      delegate_to: serverb.lab.example.com
+      register: delegated
+    - name: Display localhost system information
+      ansible.builtin.debug:
+        var: delegated
