@@ -36,7 +36,7 @@
           fi
         backup: yes
 
-    - name: Update BASHRC File to look at bashrc.d directory
+    - name: Update .ssh/config File to look at .ssh/config.d directory
       ansible.builtin.blockinfile:
         path: /home/{{ linux_username }}/.ssh/config
         marker: "##-- {mark} RH GLS SSH-Agent ANSIBLE MANAGED BLOCK --##"
