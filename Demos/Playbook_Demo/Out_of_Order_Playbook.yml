@@ -1,0 +1,23 @@
+---
+- name: This is the name of my play
+  hosts: localhost
+
+  post_tasks:
+    - name:  Pre-Task to login to the API for Ansible Tasks (Post Tasks Section)
+      debug:
+        msg: This will use a module to login to the API
+
+  tasks:
+    - name: Create Ansible User (Task Section)
+      debug:
+        msg: This will use the USER  module
+
+  handlers:
+    - name: Restart SSHD (Handlers Section)
+      debug:
+        msg: This sill use the SERVICE or SYSTEMD
+
+  pre_tasks:
+    - name:  Pre-Task to login to the API for Ansible Tasks (Pre-Tasks Section)
+      debug:
+        msg: This will use a module to login to the API
