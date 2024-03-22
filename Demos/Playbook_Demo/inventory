@@ -1,4 +1,4 @@
-servera
+servera 
 serverb
 serverc
 serverd
@@ -8,3 +8,6 @@ servera.lab.example.com
 serverb.lab.example.com
 serverc.lab.example.com
 serverd.lab.example.com
+
+[all:vars]
+var_inventory=This is a ROLE variable from Inventory

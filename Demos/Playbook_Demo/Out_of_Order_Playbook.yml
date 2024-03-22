@@ -1,6 +1,8 @@
 ---
-- name: This is the name of my play
+- name: This is a sample playbook to demonstrate order with ROLES
   hosts: localhost
+  vars:
+    - var_playbook: This is a ROLE Variable from the PLAYBOOK 
 
   post_tasks:
     - name:  Pre-Task to login to the API for Ansible Tasks (Post Tasks Section)
@@ -18,6 +20,9 @@
         msg: This sill use the SERVICE or SYSTEMD
 
   pre_tasks:
-    - name:  Pre-Task to login to the API for Ansible Tasks (Pre-Tasks Section)
+    - name: Pre-Task to login to the API for Ansible Tasks (Pre-Tasks Section)
       debug:
         msg: This will use a module to login to the API
+
+  roles:
+    - tmichett.role-demo-debug
