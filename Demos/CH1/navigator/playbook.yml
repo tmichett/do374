@@ -7,5 +7,5 @@
       ansible.builtin.ping:
 
     - name: Displaying Host Output
-       ansible.builtin.debug:
+      ansible.builtin.debug:
         msg: Hello, I'm {{ ansible_facts['hostname']  }} and my kernel version is {{ ansible_facts['kernel'] }}.
