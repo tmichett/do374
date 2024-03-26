@@ -11,8 +11,8 @@ collections:
   - name: ansible.windows
 
   - name: freeipa.ansible_freeipa
-  
-  - name: /build/tmichett-gls_collection_demo-1.0.1.tar.gz
+
+  - name: /build/tmichett-gls_collection_demo-1.0.7.tar.gz
     type: file
 
   - name: /build/redhat-rhel_idm-1.11.1.tar.gz
