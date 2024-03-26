@@ -1,0 +1,16 @@
+---
+- name: Main Task in ROLE (DEFAULTS Variable)
+  ansible.builtin.debug:
+    var: var_main
+
+- name: Main Task in ROLE (VARS Variable)
+  ansible.builtin.debug:
+    var: var_vars
+
+- name: Main Task in ROLE (PLAYBOOK Variable)
+  ansible.builtin.debug:
+    var: var_playbook
+
+- name: Main Task in ROLE (Inventory Variable)
+  ansible.builtin.debug:
+    var: var_inventory

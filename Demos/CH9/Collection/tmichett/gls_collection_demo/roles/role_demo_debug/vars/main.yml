@@ -1,0 +1,4 @@
+---
+# vars file for role-demo-debug
+
+var_vars: This is a role variable from the tasks/main.yml in VARS folder
