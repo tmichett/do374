@@ -1,0 +1,16 @@
+---
+- name: This is a sample playbook to demonstrate order with ROLES
+  hosts: servera
+  gather_facts: false
+  vars:
+    - var_playbook: This is a ROLE Variable from the PLAYBOOK
+
+  tasks:
+    - name: Print all variables for a Host (Defined Variables)
+      debug:
+        var: vars
+
+    - name: Print all host variables (Inventory Variables)
+      debug:
+        var: hostvars[inventory_hostname]
+
